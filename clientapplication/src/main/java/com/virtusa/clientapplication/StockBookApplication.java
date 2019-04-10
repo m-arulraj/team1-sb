@@ -7,11 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class StockBookApplication {
-	private static Logger logger=Logger.getLogger(StockBookApplication.class);
+	
 	public static void main( String[] args )
     {
-		logger.info("Application staretd");
-		PropertyConfigurator.configure("src//main//resources//logging.properties");
+		 Logger logger=Logger.getLogger(StockBookApplication.class);
+		PropertyConfigurator.configure("src/main/resources/log4j.properties");
+		logger.debug("Application staretd");
         SpringApplication.run(StockBookApplication.class, args);
     }
 }
