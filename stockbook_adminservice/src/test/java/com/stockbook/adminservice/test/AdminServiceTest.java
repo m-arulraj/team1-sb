@@ -34,7 +34,7 @@ public class AdminServiceTest {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
 	}
 
-	 //@Test
+	// @Test
 	public void test() throws Exception {
 
 		User user = new User();
@@ -56,21 +56,21 @@ public class AdminServiceTest {
 
 	}
 
-	 @Test
+	@Test
 	public void getUser() throws Exception {
 
 		mockMvc.perform(MockMvcRequestBuilders.get("/api/user/1")).andExpect(MockMvcResultMatchers.status().isOk());
 
 	}
 
-	 @Test
+	@Test
 	public void getAllUsers() throws Exception {
 
 		mockMvc.perform(MockMvcRequestBuilders.get("/api/users/")).andExpect(MockMvcResultMatchers.status().isOk());
 
 	}
 
-	 @Test
+	// @Test
 	public void deleteUser() throws Exception {
 
 		String uri = "/api/user/24";

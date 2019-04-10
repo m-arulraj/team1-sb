@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.stockbook.adminservice.domain.Authorities;
 import com.stockbook.adminservice.domain.User;
+import com.stockbook.adminservice.service.AuthoritiesService;
 import com.stockbook.adminservice.service.UserService;
 
 @RestController
@@ -23,6 +25,9 @@ public class UserResource {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	AuthoritiesService authoritiesService;
 
 	@RequestMapping(value = "/user/", method = RequestMethod.POST)
 	public ResponseEntity<String> createUser(@RequestBody User user, UriComponentsBuilder Builder) {
@@ -71,6 +76,20 @@ public class UserResource {
 	public void blockUser(@PathVariable("id") Long id) {
 
 		userService.blockUser(id);
+	}
+
+	@RequestMapping(value = "/users/user/{username}", method = RequestMethod.GET)
+	public User getUserByUserName(@PathVariable("username") String username) {
+		return userService.getUserByUserName(username);
+
+	}
+
+	@RequestMapping(value = "/users/user/roles/{username}", method = RequestMethod.GET)
+	public List<Authorities> getRoles(@PathVariable("username") String username) {
+
+		List<Authorities> rolesList = authoritiesService.getAllRoles(username);
+		return rolesList;
+
 	}
 
 }
