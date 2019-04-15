@@ -19,7 +19,7 @@ public class StockBookApplication {
 
 	public static void main(String[] args) {
 		logger.info("Application staretd");
-		PropertyConfigurator.configure("src//main//resources//logging.properties");
+		PropertyConfigurator.configure("src/main/resources/logging.properties");
 		SpringApplication.run(StockBookApplication.class, args);
 	}
 }

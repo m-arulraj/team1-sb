@@ -30,6 +30,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
 
 		ResponseEntity<User> response = null;
 		String name = authentication.getName();
+		System.out.println(name+"*********************************");
 		String password = (String) authentication.getCredentials();
 
 		String uri = "http://localhost:8080/api/users/user" + name;

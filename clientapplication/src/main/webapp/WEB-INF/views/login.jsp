@@ -41,11 +41,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 
 <body>
-	<script
-		src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+<!-- 	<<!-- script
+		src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script> -->
 	<script src="//m.servedby-buysellads.com/monetization.js"
 		type="text/javascript"></script>
-	<script>
+ -->	<script>
 		(function() {
 			if (typeof _bsa !== 'undefined' && _bsa) {
 				// format, zoneKey, segment:value, options
@@ -131,13 +131,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 
-				<form action="/admin" method="post">
+				<form action="/" method="post">
 					<p class="legend">
 						Login Here
 						<!-- <span class="fa fa-hand-o-down"></span> -->
 					</p>
 					<div class="input">
-						<input type="email" placeholder="username" name="username" />
+						<input type="text" placeholder="username" name="username" />
 						<!-- <span class="fa fa-envelope"></span> -->
 					</div>
 					<div class="input">
