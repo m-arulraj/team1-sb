@@ -2,6 +2,7 @@ package com.stockbook.adminservice.logging;
 
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -14,9 +15,15 @@ public class LoggingAspect {
 
 	@Before("execution(* com.stockbook.adminservice.service.*.*(..))")
 	public void logBeforeAllMethods(JoinPoint joinPoint) {
-		
-		logger.info("Before All Methods");
-		
-		System.out.println("****LoggingAspect.logBeforeAllMethods() : " + joinPoint.getSignature().getName());
+
+		logger.info("::LoggingAspect.logBeforeAllMethods() : " + joinPoint.getSignature().getName());
+
+	}
+
+	@After("execution(* com.stockbook.adminservice.service.*.*(..))")
+	public void logAfterAllMethods(JoinPoint joinPoint) {
+
+		logger.info("::LoggingAspect.logAfterAllMethods() : " + joinPoint.getSignature().getName());
+
 	}
 }

@@ -96,7 +96,7 @@ html, body, h1, h2, h3, h4, h5 {
 		<div class="w3-row-padding w3-margin-bottom">
 			<div class="w3-quarter">
 				<div class="w3-container w3-red w3-padding-16">
-					<a href="/pavan"
+					<a href="/register"
 					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
 					<!--  <div class="w3-right">
           <h3>52</h3>
@@ -107,7 +107,7 @@ html, body, h1, h2, h3, h4, h5 {
 			</div>
 			<div class="w3-quarter">
 				<div class="w3-container w3-blue w3-padding-16">
-					<a href="/biller"
+					<a href="/register"
 					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
 					<!-- <div class="w3-left">
 						<h3>99</h3>
