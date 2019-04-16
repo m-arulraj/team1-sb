@@ -13,10 +13,10 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: buyer-service 
-          uri: lb://buyer-service
+        - id: admin-service 
+          uri: lb://admin-service
           predicates:
-          - Path=/api/products/**,/api/products/categories/**,/api/products/add_to_cart/**,/api/products/{id}/**
+          - Path=/api/user/**,/api/user/{id}/**,/api/users/**,/api/users/user/{id}/**,/api/users/user/{username}/**,/api/users/user/roles/{username}/**
         - id: utility-service 
           uri: lb://utility-service
           predicates:
