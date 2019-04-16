@@ -1,9 +1,6 @@
-server:
-  port: 8070
-
 spring:
   application:
-    name: admin-service
+    name: biller-service
   cloud:
     config:
       uri: http://localhost:8070

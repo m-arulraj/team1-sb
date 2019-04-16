@@ -1,9 +1,17 @@
 server:
-    port: 8075
+  port: 8074
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8071/eureka/
+      
 spring:
     datasource:
-        dataSourceClassName: com.mysql.cj.jdbc.MysqlDataSource
-        url: jdbc:mysql://10.5.113.86:3306/stockbook
+        dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+        url: jdbc:mysql://${DB_URL:10.5.113.86}:${DB_PORT:3306}/${DB_NAME:stockbook}
+        databaseName:
+        serverName:
         username: ${DB_USERNAME:root}
         password: ${DB_PASSWORD:root}
         connectionTimeout: 10000
@@ -11,7 +19,6 @@ spring:
         prepStmtCacheSize: 250
         prepStmtCacheSqlLimit: 2048
         useServerPrepStmts: true
-        
     jpa:
         database-platform: org.hibernate.dialect.MySQL5Dialect
         database: MYSQL

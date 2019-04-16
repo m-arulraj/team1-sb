@@ -30,7 +30,7 @@ public class BillerResource {
 		headers.setLocation(uri);
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
-
+ 
 	@GetMapping(value = "/api/bill/{id}")
 	public ResponseEntity<Bill> geBillById(@PathVariable int id) {
 		Bill bill = billerService.getBillById(id);

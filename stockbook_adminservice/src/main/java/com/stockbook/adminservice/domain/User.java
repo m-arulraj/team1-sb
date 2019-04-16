@@ -7,10 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user")
@@ -20,20 +16,15 @@ public class User {
 	@GeneratedValue
 	private Long id;
 
-	
 	@Column(name = "username")
 	private String username;
 
 	@Column(name = "password")
 	private String password;
 
-	@Pattern(regexp = "[^0-9]*", message = "invalid")
-	@NotEmpty(message = "Name can’t be empty")
 	@Column(name = "name")
 	private String name;
 
-	@Size(min = 3, max = 20, message = "Email id can't be empty")
-	@Email(message = "Please enter a valid email")
 	@Column(name = "email")
 	private String email;
 

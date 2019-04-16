@@ -123,9 +123,9 @@
         
         <div class="form-group">
             <h5>Select Role</h5>
-  <select name="cars" class="form-control" required="required">
+  <select name="Role" class="form-control" required="required">
     <option value="MANAGER">MANAGER</option>
-    <option value="BILLER">BILLER</option>
+   <!--  <option value="BILLER">BILLER</option> -->
   </select>
   <br><br>
         </div>

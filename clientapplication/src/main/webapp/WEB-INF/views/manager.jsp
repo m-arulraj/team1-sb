@@ -53,7 +53,7 @@ html, body, h1, h2, h3, h4, h5 {
 			<!-- <a href="#"
 				class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
 				onclick="w3_close()" title="close menu"><i
-				class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> --> <a href="/pavan"
+				class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> --> <a href="/addproduct"
 				class="w3-bar-item w3-button w3-padding "><i
 				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Product</a> <!-- <a href="/biller"
 				class="w3-bar-item w3-button w3-padding"><i
@@ -63,9 +63,10 @@ html, body, h1, h2, h3, h4, h5 {
 				class="w3-bar-item w3-button w3-padding"><i
 				class=" fa fa-ban fa-fw"></i>&nbsp; Block user </a> --> <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-user-circle-o fa-fw"></i>&nbsp; About me</a> <!-- <a href="#"
-				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-bell fa-fw"></i>&nbsp; News</a> <a href="#"
+				class="fa fa-user-circle-o fa-fw"></i>&nbsp; About me</a> <a
+				href="/" class="w3-bar-item w3-button w3-padding"><i
+				class="fa fa-sign-out"></i>&nbsp; Logout</a>
+			<!--  <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-bank fa-fw"></i>&nbsp; General</a> <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
@@ -95,7 +96,7 @@ html, body, h1, h2, h3, h4, h5 {
 		<div class="w3-row-padding w3-margin-bottom">
 			<div class="w3-quarter">
 				<div class="w3-container w3-red w3-padding-16">
-					<a href="/pavan"
+					<a href="/addproduct"
 					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
 					<!--  <div class="w3-right">
           <h3>52</h3>

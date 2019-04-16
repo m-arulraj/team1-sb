@@ -20,12 +20,12 @@ public class UserService {
 	@Autowired
 	AuthoritiesRepository authoritiesRepository;
 
-	public User saveUser(User user) {
+	public void saveUser(User user) {
 
 		Authorities authorities = saveAuthorites(user);
 		user.setAuthorities(authorities);
 
-		return userRepository.save(user);
+		userRepository.save(user);
 
 	}
 
@@ -38,10 +38,9 @@ public class UserService {
 
 	}
 
-	public User getUser(Long id) {
+	public Optional<User> getUser(Long id) {
 
-		Optional<User> user = userRepository.findById(id);
-		return user.isPresent() ? user.get() : null;
+		return userRepository.findById(id);
 	}
 
 	public List<User> getAllUsers() {
@@ -69,9 +68,8 @@ public class UserService {
 	}
 
 	public User getUserByUserName(String username) {
-
-		User user = userRepository.findByUsername(username);
-		return user;
+		
+		return userRepository.findByUsername(username);
 	}
 
 }

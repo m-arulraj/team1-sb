@@ -43,9 +43,9 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 		System.out.println(name+"*********************************");
 		String password = (String) authentication.getCredentials();
 
-		String uri = "http://localhost:8080/api/users/user" + name;
+		String uri = "http://localhost:8073/api/users/user/" ;
 
-		response = restTemplate.getForEntity(uri, User.class);
+		response = restTemplate.getForEntity(uri+ name, User.class);
 
 		User user = response.getBody();
 
@@ -85,13 +85,13 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 		Collection<? extends GrantedAuthority> authoritires = authentication.getAuthorities();
 
 		for (GrantedAuthority grantedAuthority : authoritires) {
-			if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
+			if (grantedAuthority.getAuthority().equals("ADMIN")) {
 				hasAdminRole = true;
 				break;
-			} else if (grantedAuthority.getAuthority().equals("ROLE_BILLER")) {
+			} else if (grantedAuthority.getAuthority().equals("BILLER")) {
 				hasBillerRole = true;
 				break;
-			} else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
+			} else if (grantedAuthority.getAuthority().equals("MANAGER")) {
 				hasManagerRole = true;
 				break;
 			}

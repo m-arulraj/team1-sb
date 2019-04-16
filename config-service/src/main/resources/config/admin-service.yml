@@ -1,7 +1,14 @@
+server:
+  port: 8073
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8071/eureka/
 spring:
     datasource:
         dataSourceClassName: com.mysql.cj.jdbc.MysqlDataSource
-        url: jdbc:mysql://172.25.160.44:3306/stockbook
+        url: jdbc:mysql://10.5.113.86:3306/stockbook
         username: ${DB_USERNAME:root}
         password: ${DB_PASSWORD:root}
         connectionTimeout: 10000

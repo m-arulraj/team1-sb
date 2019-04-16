@@ -15,9 +15,8 @@
 html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
 }
-
 </style>
-<body   class="w3-light-grey">
+<body class="w3-light-grey">
 
 	<!-- Top container -->
 	<div class="w3-bar w3-top w3-black w3-large" style="z-index: 4">
@@ -26,8 +25,8 @@ html, body, h1, h2, h3, h4, h5 {
 			onclick="w3_open();">
 			<i class="fa fa-bars"></i> &nbsp;Menu
 		</button>
-		<span class="w3-bar-item w3-right">Welocome To Stock Book</span>
-		<span class="w3-bar-item w3-center"> Admin Page</span>
+		<span class="w3-bar-item w3-right">Welocome To Stock Book</span> <span
+			class="w3-bar-item w3-center"> Admin Page</span>
 	</div>
 
 	<!-- Sidebar/menu -->
@@ -40,7 +39,8 @@ html, body, h1, h2, h3, h4, h5 {
 					style="width: 46px"> -->
 			</div>
 			<div class="w3-col s8 w3-bar">
-				<span>Welcome <strong>User</strong></span><br><!--  <a href="#"
+				<span>Welcome <strong>User</strong></span><br>
+				<!--  <a href="#"
 					class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a> <a
 					href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
 				<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
@@ -54,19 +54,20 @@ html, body, h1, h2, h3, h4, h5 {
 			<!-- <a href="#"
 				class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
 				onclick="w3_close()" title="close menu"><i
-				class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> --> <a href="/pavan"
-				class="w3-bar-item w3-button w3-padding "><i
-				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Manager</a> <a href="/biller"
-				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Biller</a> <a href="/viewstock"
-				class="w3-bar-item w3-button w3-padding"><i
+				class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> -->
+			<a href="/registermanager" class="w3-bar-item w3-button w3-padding "><i
+				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Manager</a> <a
+				href="/registerBiller" class="w3-bar-item w3-button w3-padding"><i
+				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Biller</a> <a
+				href="/viewstock" class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-eye fa-fw"></i>&nbsp; View Stock</a> <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
 				class=" fa fa-ban fa-fw"></i>&nbsp; Block user </a> <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-user-circle-o fa-fw"></i>&nbsp; About me</a> <!-- <a href="#"
+				class="fa fa-user-circle-o fa-fw"></i>&nbsp; About me</a>
+			<a href="/"
 				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-bell fa-fw"></i>&nbsp; News</a> <a href="#"
+				class="fa fa-sign-out"></i>&nbsp; Logout</a><!--  <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-bank fa-fw"></i>&nbsp; General</a> <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
@@ -84,7 +85,7 @@ html, body, h1, h2, h3, h4, h5 {
 
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
-	
+
 
 		<!-- Header -->
 		<header class="w3-container" style="padding-top: 22px">
@@ -96,8 +97,8 @@ html, body, h1, h2, h3, h4, h5 {
 		<div class="w3-row-padding w3-margin-bottom">
 			<div class="w3-quarter">
 				<div class="w3-container w3-red w3-padding-16">
-					<a href="/register"
-					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
+					<a href="/registermanager" class="w3-bar-item w3-button"><i
+						class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
 					<!--  <div class="w3-right">
           <h3>52</h3>
         </div> -->
@@ -107,8 +108,8 @@ html, body, h1, h2, h3, h4, h5 {
 			</div>
 			<div class="w3-quarter">
 				<div class="w3-container w3-blue w3-padding-16">
-					<a href="/register"
-					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
+					<a href="/registerBiller" class="w3-bar-item w3-button"><i
+						class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
 					<!-- <div class="w3-left">
 						<h3>99</h3>
 					</div> -->
@@ -119,8 +120,8 @@ html, body, h1, h2, h3, h4, h5 {
 			<div class="w3-quarter">
 				<div class="w3-container w3-teal w3-padding-16">
 					<div class="w3-left">
-						<a href="/viewstock"
-					class="w3-bar-item w3-button"><i class="fa fa-eye" style="font-size: 48px; color: black"></i></a>
+						<a href="/viewstock" class="w3-bar-item w3-button"><i
+							class="fa fa-eye" style="font-size: 48px; color: black"></i></a>
 					</div>
 					<!-- <div class="w3-right">
 						<h3>23</h3>
@@ -132,13 +133,14 @@ html, body, h1, h2, h3, h4, h5 {
 			<div class="w3-quarter">
 				<div class="w3-container w3-brown w3-text-white w3-padding-16">
 					<div class="w3-left">
-						<i class="fa fa-bar-chart w3-xxxlarge"></i>
+						<a href="/viewprofit" class="w3-bar-item w3-button">
+						<i class="fa fa-bar-chart w3-xxxlarge"></i></a>
 					</div>
 					<div class="w3-right">
 						<h3>50</h3>
 					</div>
 					<div class="w3-clear"></div>
-					<h4>View Profit </h4>
+					<h4>View Profit</h4>
 				</div>
 			</div>
 		</div>
@@ -191,18 +193,18 @@ html, body, h1, h2, h3, h4, h5 {
 					</table>
 				</div>-->
 			</div>
-		</div> 
+		</div>
 		<hr>
 		<div class="w3-container">
 			<h5>Product Quantity Available</h5>
 			<p>Fast Moving Item</p>
 			<div class="w3-grey">
-			
+
 				<div class="w3-container w3-center w3-padding w3-red"
-					style="width: 25%"> 20</div>
+					style="width: 25%">20</div>
 			</div>
 
-			
+
 
 			<p>Slow Moving Item</p>
 			<div class="w3-grey">
@@ -282,7 +284,7 @@ html, body, h1, h2, h3, h4, h5 {
 				</div>
 			</div>
  -->
-			<!-- <div class="w3-row">
+		<!-- <div class="w3-row">
 				<div class="w3-col m2 text-center">
 					<img class="w3-circle" src="/w3images/avatar1.png"
 						style="width: 96px; height: 96px">
