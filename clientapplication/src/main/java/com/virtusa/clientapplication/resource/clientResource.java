@@ -50,7 +50,7 @@ public class clientResource {
 	public ModelAndView billerPage(@RequestParam("productname") String product) {
 		
 		List<Product> list = new ArrayList<Product>();
-		list.add(new Product(1, "bag", 1, "tourist Bag"));
+		
 		ModelAndView mav=new ModelAndView("biller");
 		mav.addObject("listproducts", list);
 		return mav;

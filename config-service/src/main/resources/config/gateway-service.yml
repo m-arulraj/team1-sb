@@ -17,10 +17,10 @@ spring:
           uri: lb://admin-service
           predicates:
           - Path=/api/user/**,/api/user/{id}/**,/api/users/**,/api/users/user/{id}/**,/api/users/user/{username}/**,/api/users/user/roles/{username}/**
-        - id: utility-service 
-          uri: lb://utility-service
+        - id: product-service 
+          uri: lb://product-service
           predicates:
-          - Path=/api/utility/**
+          - Path=/api/product/**,/api/products/**,/api/category/**,/api/stock/**,/api/categories/**
           filters:
           - RewritePath=/proxy/(?<api>.*), /$\{api} 
         - id: admin-service 

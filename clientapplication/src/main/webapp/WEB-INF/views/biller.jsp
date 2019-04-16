@@ -4,11 +4,10 @@
 
 <!DOCTYPE html>
 <html>
-<title>Stock Book</title>
+<title>Biller Home</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
@@ -18,76 +17,66 @@ html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
 }
 </style>
-<style>
-input[type=text] {
-	width: 130px;
-	box-sizing: border-box;
-	border: 2px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-	background-color: white;
-	background-image: url('searchicon.png');
-	background-position: 10px 10px;
-	background-repeat: no-repeat;
-	padding: 12px 20px 12px 40px;
-	-webkit-transition: width 0.4s ease-in-out;
-	transition: width 0.4s ease-in-out;
-}
-
-.topnav-centered a {
-	float: none;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-</style>
-
 <body class="w3-light-grey">
 
-	<!-- Top container -->
-	<div class="w3-bar w3-top w3-black w3-large" style="z-index: 4"
-		align="center">
-		<span class="topnav-centered">Welcome To Stock Book</span> <span
-			class="w3-bar-item w3-center"> Biller Page </span> <a href="#"
-			class="w3-bar-item w3-button w3-padding"> <i
-			class="fa fa-user-circle-o fa-fw"> </i>&nbsp; About me
-		</a> <a href="/" class="w3-bar-item w3-right"><i
-			class="fa fa-sign-out"></i>Logout</a>
+	<%@include file="biller-fragments/util.jsp" %>
+	<%@include file="biller-fragments/biller-header.jsp" %>
+
+	<%@include file="biller-fragments/biller-sidebar.jsp" %>
+	
+
+
+
+
+	<!-- !PAGE CONTENT! -->
+	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
+
+
+		<!-- Header -->
+		<header class="w3-container" style="padding-top: 22px">
+			<h5>
+				<b><i class="fa fa-dashboard"></i> My Dashboard</b>
+			</h5>
+		</header>
+
+		<div class="w3-row-padding w3-margin-bottom">
+			<div class="w3-third">
+				<div class="w3-container w3-red w3-padding-16">
+					<a href="/biller/bill" class="w3-bar-item w3-button"><i
+						class="fa fa-file-text-o" style="font-size: 48px; color: black"></i></a>
+					
+					<div class="w3-clear"></div>
+					<h4>Generate Bill</h4>
+				</div>
+			</div>
+			<div class="w3-third">
+				<div class="w3-container w3-blue w3-padding-16">
+					<a href="/registerBiller" class="w3-bar-item w3-button"><i
+						class="fa fa-user-plus" style="font-size: 48px; color: black"></i></a>
+					<div class="w3-clear"></div>
+					<h4>Update Profile</h4>
+				</div>
+			</div>
+			<div class="w3-third">
+				<div class="w3-container w3-teal w3-padding-16">
+					<div class="w3-left">
+						<a href="/viewstock" class="w3-bar-item w3-button"><i
+							class="fa fa-sign-out" style="font-size: 48px; color: black"></i></a>
+					</div>
+					<div class="w3-clear"></div>
+					<h4>Logout</h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="w3-panel">
+			<div class="w3-row-padding" style="margin: 0 -16px">
+				
+			</div>
+		</div>
+		<hr>
 	</div>
-	<br>
-	<br>
 
-	<div id="tfheader" align="center">
-		<form id="tfnewsearch" method="get" action="/search">
-			<input type="text" class="tftextinput" name="productname" size="21"><input
-				type="submit" value="search" class="tfbutton">
-		</form>
-		<div class="tfclear"></div>
-	</div>
-	<br>
-	<br>
-	<br>
-
-	<table border="1" align="center">
-		<tr>
-			<th>ID</th>
-			<th>PRODUCT NAME</th>
-			<th>CATEGORY ID</th>
-			<th>DESCRIPTION</th>
-
-		</tr>
-		<c:forEach items="${listproducts}" var="department">
-			<tr>
-				<td>${department.getId()}</td>
-				<td>${department.getName()}</td>
-				<td>${department.getCategoryId()}</td>
-				<td>${department.getDescription()}</td>
-
-			</tr>
-		</c:forEach>
-	</table>
-
-	<br />
+	
 </body>
 </html>

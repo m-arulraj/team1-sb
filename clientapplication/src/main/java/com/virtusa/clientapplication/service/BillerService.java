@@ -10,20 +10,27 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.virtusa.clientapplication.domain.Category;
+import com.virtusa.clientapplication.domain.Product;
 import com.virtusa.clientapplication.util.EndPointConstant;
 
 @Service
-public class ClientService {
+public class BillerService {
 
 	@Autowired
 	RestTemplate restTemplate;
 	
-	/*
-	 * public ResponseEntity<List<Category>> getCategoryList() {
-	 * ResponseEntity<List<Category>> responses =
-	 * restTemplate.exchange(EndPointConstant.CATEGORY_SERVICE_URI, HttpMethod.GET,
-	 * null, new ParameterizedTypeReference<List<Category>>() { }); return
-	 * responses; }
-	 */
+	public List<Product> getAllProducts() {
+		
+		ResponseEntity<List<Product>> response =
+				restTemplate.exchange(EndPointConstant.PRODUCT_SERVICE_URI+"/products",
+				HttpMethod.GET, null, new ParameterizedTypeReference<List<Product>>() {
+				});
+		List<Product>  products = (List<Product>) response.getBody();
+		return products;
+		
+	}
+	
+	
+	
 	
 }

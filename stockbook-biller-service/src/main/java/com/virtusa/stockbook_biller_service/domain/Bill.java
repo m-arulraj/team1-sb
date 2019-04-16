@@ -28,5 +28,44 @@ public class Bill {
 	@Column(name="grand_total")
 	double grandTotal;
 	@Column(name="bill_date")
-	String billDate; 
+	String billDate;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getConatct() {
+		return conatct;
+	}
+	public void setConatct(int conatct) {
+		this.conatct = conatct;
+	}
+	public String getBillerName() {
+		return billerName;
+	}
+	public void setBillerName(String billerName) {
+		this.billerName = billerName;
+	}
+	public double getGrandTotal() {
+		return grandTotal;
+	}
+	public void setGrandTotal(double grandTotal) {
+		this.grandTotal = grandTotal;
+	}
+	public String getBillDate() {
+		return billDate;
+	}
+	public void setBillDate(String billDate) {
+		this.billDate = billDate;
+	} 
+	
+	
+	
 }
