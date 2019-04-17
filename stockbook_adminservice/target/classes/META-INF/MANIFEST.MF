@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: stockbook_adminservice
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: shshubham
+Built-By: kumarpavan
 Implementation-Vendor-Id: com.stockbook
 Build-Jdk: 1.8.0_201
 Implementation-URL: http://maven.apache.org

@@ -82,16 +82,16 @@ public class clientResource {
 	public ModelAndView addProductToTable(@ModelAttribute("product") Product product) {
 
 		ModelAndView mav = new ModelAndView("addproduct");
-		mav.addObject(product.getName());
-		mav.addObject(product.getDescription());
-		mav.addObject(product.getCategoryId());
-		 product.setId(77);
+		
+		  mav.addObject(product.getName()); mav.addObject(product.getDescription());
+		mav.addObject(product.getCategory().getId());
+		
 		logger.debug(product);
                
 		
 		  Product prod = clientService.addproduct(product);
 		 
-		 
+		  
 
 		return mav;
 	}

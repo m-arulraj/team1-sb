@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -8,30 +9,41 @@
 <title>Insert title here</title>
 <style type="text/css">
 div {
-    position:absolute;
-    top:35%;
-    right:17%;
-    left:29%;
+	position: absolute;
+	top: 35%;
+	right: 17%;
+	left: 29%;
 }
 </style>
 </head>
 <body>
 
-<div>
-		<form name="form1" action="addprodcuts" method="post" >
+	<div>
+		<form:form name="form1" action="/add/product/table" method="post"
+			modelAttribute="product">
 			
-				Product Name: <input type="text" name="pname">&emsp;&emsp;
-				Select category <select name="institute">
-					<option>-----Select the Category-----</option>
-					<c:forEach items="${categorylist}" var="category">
-						<option value="${category.getId()}">${category.getName()}</option>
-					</c:forEach>
-				</select><br> <br> <input type="submit" value="Add" "/>&emsp;
+				Product Name: <form:input type="text" path="name" />&emsp;&emsp;
+				Description: <form:input type="text" path="description" />
+			&emsp;&emsp;
+			<br>
+			<br>
+			<br>
+				Select category <form:select path="category">
+				<option>-----Select the Category-----</option>
+				<c:forEach items="${categorylist}" var="category">
+					<form:option value="${category.getId()}">${category.getName() }</form:option>
+				</c:forEach>
+			</form:select>
+			<br>
+			<br>
+			<input type="submit" value="Add" />
+			&emsp;&emsp;&emsp;
 
-			
-		</form></div>
-		<br />
-	
+
+		</form:form>
+	</div>
+	<br />
+
 
 </body>
 </html>
