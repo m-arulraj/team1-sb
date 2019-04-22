@@ -26,6 +26,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.virtusa.clientapplication.domain.Authorities;
 import com.virtusa.clientapplication.domain.User;
+import com.virtusa.clientapplication.util.*;
 
 @Component
 public class UserAuthenticationProvider implements AuthenticationProvider, AuthenticationSuccessHandler {
@@ -40,12 +41,9 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 
 		ResponseEntity<User> response = null;
 		String name = authentication.getName();
-		System.out.println(name+"*********************************");
 		String password = (String) authentication.getCredentials();
 
-		String uri = "http://localhost:8073/api/users/user/" ;
-
-		response = restTemplate.getForEntity(uri+ name, User.class);
+		response = restTemplate.getForEntity(EndpointConstant.ADMIN_SERVICE_URI + name, User.class);
 
 		User user = response.getBody();
 
@@ -57,8 +55,9 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 			throw new BadCredentialsException("Wrong password.");
 		}
 
-		ResponseEntity<List<Authorities>> roleResponse = restTemplate.exchange(uri + "/roles/" + name, HttpMethod.GET,
-				null, new ParameterizedTypeReference<List<Authorities>>() {
+		ResponseEntity<List<Authorities>> roleResponse = restTemplate.exchange(
+				EndpointConstant.ADMIN_SERVICE_URI + "roles/" + name, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Authorities>>() {
 				});
 
 		List<Authorities> roles = roleResponse.getBody();
@@ -85,13 +84,13 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 		Collection<? extends GrantedAuthority> authoritires = authentication.getAuthorities();
 
 		for (GrantedAuthority grantedAuthority : authoritires) {
-			if (grantedAuthority.getAuthority().equals("ADMIN")) {
+			if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
 				hasAdminRole = true;
 				break;
-			} else if (grantedAuthority.getAuthority().equals("BILLER")) {
+			} else if (grantedAuthority.getAuthority().equals("ROLE_BILLER")) {
 				hasBillerRole = true;
 				break;
-			} else if (grantedAuthority.getAuthority().equals("MANAGER")) {
+			} else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
 				hasManagerRole = true;
 				break;
 			}
