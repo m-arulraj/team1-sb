@@ -9,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.virtusa.clientapplication.domain.Category;
 import com.virtusa.clientapplication.domain.Product;
 import com.virtusa.clientapplication.util.EndPointConstant;
+
 
 @Service
 public class BillerService {

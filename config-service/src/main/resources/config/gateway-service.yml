@@ -22,8 +22,4 @@ spring:
           predicates:
           - Path=/api/product/**,/api/products/**,/api/category/**,/api/stock/**,/api/categories/**,/api/**
           filters:
-          - RewritePath=/proxy/(?<api>.*), /$\{api} 
-        - id: admin-service 
-          uri: lb://admin-service
-          predicates:
-          - Path=/api/admin/**,/api/admin/update_activation_status/{id}/status/{status}/**          
+          - RewritePath=/proxy/(?<api>.*), /$\{api}        

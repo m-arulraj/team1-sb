@@ -19,12 +19,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	PasswordEncoder passwordEncoder;
 
 	@Autowired
-	UserAuthenticationProvider userAuthenticationProvider;
+	UserAuthenticationProvider authenticationProvider;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		auth.authenticationProvider(userAuthenticationProvider);
+		auth.authenticationProvider(authenticationProvider);
 
 	}
 
@@ -37,11 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("api/")
-				.hasAnyRole("ADMIN", "MANAGER", "BILLER").and().formLogin().loginPage("/")
-				.successHandler(userAuthenticationProvider).failureUrl("/api/login?error=true").permitAll().and()
-				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/api/welcome?logout=true").deleteCookies("JSESSIONID").invalidateHttpSession(true)
-				.permitAll().and().exceptionHandling().accessDeniedPage("/api/403").and().csrf().disable();
+				.hasAnyRole("ADMIN", "MANAGER", "BILLER").and().formLogin().loginPage("/").successHandler(authenticationProvider)
+				.failureUrl("/api/login?error=true").permitAll().and().logout()
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/api/welcome?logout=true")
+				.deleteCookies("JSESSIONID").invalidateHttpSession(true).permitAll().and().exceptionHandling()
+				.accessDeniedPage("/api/403").and().csrf().disable();
 
 	}
 

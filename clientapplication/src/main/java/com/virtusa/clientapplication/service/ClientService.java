@@ -38,6 +38,7 @@ public class ClientService {
 
 	}
 
+<<<<<<< HEAD
 	public void saveStock(Stock stock) {
 		ResponseEntity<Stock> response = restTemplate.postForEntity(EndPointConstant.PRODUCT_SERVICE_URI + "stock",
 				stock, Stock.class);
@@ -45,5 +46,23 @@ public class ClientService {
 	}
 
 	
+=======
+	public List<Product> getAllProducts() {
+
+		ResponseEntity<List<Product>> response = restTemplate.exchange(
+				EndPointConstant.PRODUCT_SERVICE_URI + "products", HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Product>>() {
+				});
+		return response.getBody();
+	}
+
+	public List<Stock> getStockList(Long id) {
+		ResponseEntity<List<Stock>> responses = restTemplate.exchange(
+				EndPointConstant.PRODUCT_SERVICE_URI + "/stock/product/" + id, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Stock>>() {
+				});
+		return responses.getBody();
+	}
+>>>>>>> 18d765e98f67376c92d4857c30b1f44f47e8410d
 
 }

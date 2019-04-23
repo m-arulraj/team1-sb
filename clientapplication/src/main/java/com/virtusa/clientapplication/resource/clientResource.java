@@ -1,6 +1,8 @@
 package com.virtusa.clientapplication.resource;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,15 +19,19 @@ import org.springframework.web.servlet.ModelAndView;
 import com.virtusa.clientapplication.domain.Category;
 import com.virtusa.clientapplication.domain.Product;
 import com.virtusa.clientapplication.domain.Stock;
+<<<<<<< HEAD
+=======
+import com.virtusa.clientapplication.domain.User;
+>>>>>>> 18d765e98f67376c92d4857c30b1f44f47e8410d
 import com.virtusa.clientapplication.service.ClientService;
 
 @Controller
-public class clientResource {
+public class ClientResource {
 
 	@Autowired
 	ClientService clientService;
 
-	private static Logger logger = Logger.getLogger(clientResource.class);
+	private static Logger logger = Logger.getLogger(ClientResource.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String loginPage() {
@@ -35,7 +41,8 @@ public class clientResource {
 
 	@RequestMapping(value = "/admin")
 	public String adminPage() {
-		logger.info("entered amin page");
+		logger.info("entered admin page");
+
 		return "admin";
 	}
 
@@ -56,18 +63,27 @@ public class clientResource {
 		return null;
 	}
 
-	@RequestMapping("/viewstock")
-	public String sample2() {
-		return "viewstock";
+	@RequestMapping(value = "/viewstock", method = RequestMethod.GET)
+	public ModelAndView viewStock() {
+
+		ModelAndView mav = new ModelAndView("viewstock");
+
+		List<Product> products = clientService.getAllProducts();
+		mav.addObject("productlist", products);
+		return mav;
 	}
 
+	
+
 	@RequestMapping(value = "/registermanager", method = RequestMethod.GET)
-	public String registerManager() {
+	public String registerManager(Model model) {
+		model.addAttribute("user", new User());
 		return "registermanager";
 	}
 
 	@RequestMapping(value = "/registerBiller", method = RequestMethod.GET)
-	public String registerBiller() {
+	public String registerBiller(Model model) {
+		model.addAttribute("user", new User());
 		return "registerBiller";
 	}
 
@@ -81,6 +97,7 @@ public class clientResource {
 	}
 
 	@RequestMapping(value = "/add/product/table", method = RequestMethod.POST)
+<<<<<<< HEAD
 	public ModelAndView addProductToTable(@ModelAttribute("product") Product product, HttpSession session) {
 
 		ModelAndView mav = new ModelAndView("addstock");
@@ -89,6 +106,19 @@ public class clientResource {
 		mav.addObject(product.getDescription());
 
 		logger.debug(product);
+=======
+	public ModelAndView addProductToTable(@ModelAttribute("product") Product product) {
+
+		ModelAndView mav = new ModelAndView("addproduct");
+
+		mav.addObject(product.getName());
+		mav.addObject(product.getDescription());
+		mav.addObject(product.getCategory().getId());
+
+		logger.debug(product);
+
+		Product prod = clientService.addproduct(product);
+>>>>>>> 18d765e98f67376c92d4857c30b1f44f47e8410d
 
 		Product prod = clientService.addproduct(product);
 		mav.addObject("productdetails", prod);
@@ -105,6 +135,7 @@ public class clientResource {
 		return mav;
 	}
 
+<<<<<<< HEAD
 	@RequestMapping(value = "/addstocktotable")
 	public String addStockToTable(@ModelAttribute("stockdetails") Stock stock, HttpSession session) {
 
@@ -117,4 +148,16 @@ public class clientResource {
 		return "stockadded";
 	}
 
+=======
+	@RequestMapping(value = "/viewstockdetails", method = RequestMethod.GET)
+	public ModelAndView viewStockDetails(@RequestParam("productId") Long id) {
+
+		ModelAndView mav = new ModelAndView("stockdetails");
+		List<Stock> stock = clientService.getStockList(id);
+		//stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList());
+		mav.addObject("stockdetails", stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList()));
+		return mav;
+
+	}
+>>>>>>> 18d765e98f67376c92d4857c30b1f44f47e8410d
 }
