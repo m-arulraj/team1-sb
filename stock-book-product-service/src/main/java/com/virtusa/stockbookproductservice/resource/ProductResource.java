@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.virtusa.stockbookproductservice.domain.Category;
 import com.virtusa.stockbookproductservice.domain.Product;
 import com.virtusa.stockbookproductservice.service.ProductService;
 

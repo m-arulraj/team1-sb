@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <title>The Stock Book Registration Form</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
@@ -101,40 +102,48 @@
 </style>
 </head>
 <body>
-<div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
-		<h2>Register</h2>
-		<p class="hint-text">Create your account. It's free and only takes a minute.</p>
-        <div class="form-group">
-			<div class="row">
-				<div class="col-xs-6"><input type="text" class="form-control" name="first_name" placeholder="Name" required="required"></div>
-				<div class="col-xs-6"><input type="text" class="form-control" name="last_name" placeholder="User Name" required="required"></div>
-			</div>        	
-        </div>
-        <div class="form-group">
-        	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
-        </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
-        </div>
-		<div class="form-group">
-            <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required="required">
-        </div>   
-        
-        <div class="form-group">
-            <h5>Select Role</h5>
-  <select name="Role" class="form-control" required="required">
-    <option value="MANAGER">MANAGER</option>
-   <!--  <option value="BILLER">BILLER</option> -->
-  </select>
-  <br><br>
-        </div>
-        
-		<div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
-        </div>
-    </form>
-	
-</div>
+	<div class="signup-form">
+		<form:form action="/user" method="post" modelAttribute="user">
+			<h2>Register</h2>
+			<p class="hint-text">Create account</p>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-6">
+						<form:input type="text" class="form-control" path="name"
+							placeholder="Name" required="required"/>
+					</div>
+					<div class="col-xs-6">
+						<form:input type="text" class="form-control" path="username"
+							placeholder="User Name" required="required"/>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<form:input type="email" class="form-control" path="email"
+					placeholder="Email" required="required"/>
+			</div>
+			<div class="form-group">
+				<form:input type="password" class="form-control" path="password"
+					placeholder="Password" required="required"/>
+			</div>
+			<div class="form-group">
+				<form:input type="tel" class="form-control" path="contact"
+					placeholder="Phone Number" required="required"/>
+			</div>
+
+			<div class="form-group">
+				<h5>Select Role</h5>
+				<form:select name="cars" class="form-control" required="required" path="authorities.role">
+					<form:option value="MANAGER" >MANAGER</form:option>
+				</form:select> <br> <br>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-success btn-lg btn-block">Register
+					Now</button>
+			</div>
+		</form:form>
+
+	</div>
 </body>
 </html>      

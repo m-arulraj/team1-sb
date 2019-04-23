@@ -59,26 +59,25 @@ public class StockService {
 
 		Optional<Stock> optStock = stockRepository.findById(id);
 
-		if (optStock.isPresent()) 
+		if (optStock.isPresent())
 			return optStock.get();
-		
-		else 
+
+		else
 			throw new StockNotFoundException("Stock Id not available");
 
 	}
 
-	//update stock by stock id
+	// update stock by stock id
 	@Transactional
 	public Stock updateStockByStockId(Stock stock) {
-		
+
 		Stock theStock = null;
-		
+
 		Optional<Stock> optStock = stockRepository.findById(stock.getId());
-		
-		if(optStock.isPresent())
-		{
+
+		if (optStock.isPresent()) {
 			theStock = optStock.get();
-			
+
 			theStock.setDate(stock.getDate());
 			theStock.setQuantity(stock.getQuantity());
 			theStock.setManufacturer(stock.getManufacturer());
@@ -89,14 +88,13 @@ public class StockService {
 			theStock.setGst(stock.getGst());
 			theStock.setThreshold(stock.getThreshold());
 			theStock.setProductId(stock.getProductId());
-			
+
 			return stockRepository.save(theStock);
-			
+
+		} else {
+			throw new StockNotFoundException("Stock by id: " + stock.getId() + " is not present");
 		}
-		else {
-			throw new StockNotFoundException("Stock by id: "+stock.getId()+" is not present");
-		}
-		
+
 	}
 
 }

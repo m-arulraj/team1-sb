@@ -1,8 +1,9 @@
 package com.virtusa.clientapplication.util;
 
-public class EndpointConstant {
+public class EndPointConstant {
 
-	public static final String ADMIN_SERVICE_URI="http://localhost:8073/api/users/user/";
-	
-	
+	public static final String ADMIN_SERVICE_URI = "http://localhost:8072/api/";
+	public static final String PRODUCT_SERVICE_URI = "http://localhost:8072/api/";
+	public static final String CATEGORY_SERVICE_URI = "http://localhost:8072/api/users/user/";
+
 }

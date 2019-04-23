@@ -43,7 +43,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 		String name = authentication.getName();
 		String password = (String) authentication.getCredentials();
 
-		response = restTemplate.getForEntity(EndpointConstant.ADMIN_SERVICE_URI + name, User.class);
+		response = restTemplate.getForEntity(EndPointConstant.ADMIN_SERVICE_URI +"users/user/"+ name, User.class);
 
 		User user = response.getBody();
 
@@ -56,7 +56,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 		}
 
 		ResponseEntity<List<Authorities>> roleResponse = restTemplate.exchange(
-				EndpointConstant.ADMIN_SERVICE_URI + "roles/" + name, HttpMethod.GET, null,
+				EndPointConstant.ADMIN_SERVICE_URI + "users/user/roles/" + name, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Authorities>>() {
 				});
 
@@ -84,7 +84,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 		Collection<? extends GrantedAuthority> authoritires = authentication.getAuthorities();
 
 		for (GrantedAuthority grantedAuthority : authoritires) {
-			if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
+			if (grantedAuthority.getAuthority().equals("ADMIN")) {
 				hasAdminRole = true;
 				break;
 			} else if (grantedAuthority.getAuthority().equals("ROLE_BILLER")) {

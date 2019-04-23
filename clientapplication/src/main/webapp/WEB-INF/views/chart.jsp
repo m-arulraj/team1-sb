@@ -37,8 +37,7 @@
 		var yValue;
 		var label;
 
-		
-	<c:forEach items="${dataPointsList}" var="dataPoints" varStatus="loop">
+		<c:forEach items="${dataPointsList}" var="dataPoints" varStatus="loop">
 		<c:forEach items="${dataPoints}" var="dataPoint">
 		yValue = parseFloat("${dataPoint.y}");
 		label = "${dataPoint.label}";
@@ -47,7 +46,7 @@
 			y : yValue,
 		});
 		</c:forEach>
-	</c:forEach>
+		</c:forEach>
 
 		chart.render();
 
@@ -55,7 +54,9 @@
 </script>
 </head>
 <body>
-	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	
+
+		<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </body>
 </html>
