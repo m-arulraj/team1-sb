@@ -61,9 +61,7 @@ html, body, h1, h2, h3, h4, h5 {
 				class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-eye fa-fw"></i>&nbsp; View Stock</a><!--  <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
-				class=" fa fa-ban fa-fw"></i>&nbsp; Block user </a> --> <a href="#"
-				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-user-circle-o fa-fw"></i>&nbsp; About me</a> <a
+				class=" fa fa-ban fa-fw"></i>&nbsp; Block user </a> --> <a
 				href="/" class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-sign-out"></i>&nbsp; Logout</a>
 			<!--  <a href="#"
@@ -105,17 +103,17 @@ html, body, h1, h2, h3, h4, h5 {
 					<h4>Add Product</h4>
 				</div>
 			</div>
-			<div class="w3-quarter">
+			<!-- <div class="w3-quarter">
 				<div class="w3-container w3-blue w3-padding-16">
 					<a href="/biller"
 					class="w3-bar-item w3-button"><i class="fa fa-refresh" style="font-size: 48px; color: black"></i></a>
 					<div class="w3-left">
-						<!-- <!-- <h3>99</h3 -->
+						<!-- <h3>99</h3
 					</div>
 					<div class="w3-clear"></div>
 					<h4>Upadte Product</h4>
 				</div>
-			</div>
+			</div> -->
 			<div class="w3-quarter">
 				<div class="w3-container w3-teal w3-padding-16">
 					<div class="w3-left">

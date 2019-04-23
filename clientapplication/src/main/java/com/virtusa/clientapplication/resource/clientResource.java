@@ -2,9 +2,10 @@ package com.virtusa.clientapplication.resource;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.virtusa.clientapplication.domain.Category;
 import com.virtusa.clientapplication.domain.Product;
+import com.virtusa.clientapplication.domain.Stock;
 import com.virtusa.clientapplication.service.ClientService;
 
 @Controller
@@ -78,22 +80,41 @@ public class clientResource {
 		return mav;
 	}
 
-	@RequestMapping(value = "/add/product/table",method=RequestMethod.POST)
-	public ModelAndView addProductToTable(@ModelAttribute("product") Product product) {
+	@RequestMapping(value = "/add/product/table", method = RequestMethod.POST)
+	public ModelAndView addProductToTable(@ModelAttribute("product") Product product, HttpSession session) {
 
-		ModelAndView mav = new ModelAndView("addproduct");
-		
-		  mav.addObject(product.getName()); mav.addObject(product.getDescription());
-		mav.addObject(product.getCategory().getId());
-		
+		ModelAndView mav = new ModelAndView("addstock");
+
+		mav.addObject(product.getName());
+		mav.addObject(product.getDescription());
+
 		logger.debug(product);
-               
-		
-		  Product prod = clientService.addproduct(product);
-		 
-		  
 
+		Product prod = clientService.addproduct(product);
+		mav.addObject("productdetails", prod);
+		session.setAttribute("savedProduct", product.getName());
+		session.setAttribute("productid", prod);
 		return mav;
+	}
+
+	@RequestMapping(value = "/addstock")
+	public ModelAndView addStock(HttpSession session, Model model) {
+		ModelAndView mav = new ModelAndView("addstocktotable");
+		mav.addObject("stockdetails", new Stock());
+		model.addAttribute("saved", session.getAttribute("savedProduct"));
+		return mav;
+	}
+
+	@RequestMapping(value = "/addstocktotable")
+	public String addStockToTable(@ModelAttribute("stockdetails") Stock stock, HttpSession session) {
+
+		Product product = (Product) session.getAttribute("productid");
+
+		stock.setProductId(product.getId());
+
+		clientService.saveStock(stock);
+
+		return "stockadded";
 	}
 
 }

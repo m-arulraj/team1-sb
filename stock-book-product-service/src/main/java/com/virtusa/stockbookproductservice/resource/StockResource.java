@@ -31,7 +31,7 @@ public class StockResource {
 	private StockService stockService;
 	
 	//save stock --done
-	@PostMapping("/stock") 
+	@PostMapping("stock") 
 	public ResponseEntity<Stock> saveStock(@RequestBody Stock stock) throws URISyntaxException
 	{
 		logger.debug(">>>>entered to post method save stock");
