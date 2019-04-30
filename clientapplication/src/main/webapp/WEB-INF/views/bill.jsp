@@ -29,7 +29,6 @@ div {
 <body>
 	<table border="1" align="center">
 		<tr>
-
 			<th>ID</th>
 			<th>MANUFACTURER</th>
 			<th>QUANTITY</th>

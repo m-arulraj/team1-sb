@@ -74,18 +74,19 @@ public class BillerController {
 
 	}
 
-	@RequestMapping(value = "/stockBill", method = RequestMethod.GET)
-	public ModelAndView addToBill(@RequestParam("productId") Long id) {
-
-		ModelAndView mav = new ModelAndView("generate-bill");
-		List<Stock> stock = clientService.getStockList(id);
-		List<Product> products = billerService.getAllProducts();
-		mav.addObject("products", products);
-		mav.addObject("product", new Product());
-		mav.addObject("stockdetails",
-				stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList()));
-		return mav;
-
-	}
+	//added this code to billresource
+	/*
+	 * @RequestMapping(value = "/stockBill", method = RequestMethod.GET) public
+	 * ModelAndView addToBill(@RequestParam("productId") Long id) {
+	 * 
+	 * ModelAndView mav = new ModelAndView("generate-bill"); List<Stock> stock =
+	 * clientService.getStockList(id); List<Product> products =
+	 * billerService.getAllProducts(); mav.addObject("products", products);
+	 * mav.addObject("product", new Product()); mav.addObject("stockdetails",
+	 * stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(
+	 * Collectors.toList())); return mav;
+	 * 
+	 * }
+	 */
 
 }

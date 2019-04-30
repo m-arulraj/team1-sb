@@ -68,45 +68,34 @@ html, body, h1, h2, h3, h4, h5 {
 <body class="w3-light-grey">
 	<%@include file="biller-fragments/util.jsp"%>
 	<%@include file="biller-fragments/biller-header.jsp"%>
-
 	<%@include file="biller-fragments/biller-sidebar.jsp"%>
-
-
 
 	<br>
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
 		<div class="w3-row-padding ">
-			
-			
-			
-			
-			<form action="/biller/stockBill">
-				<div class="w3-half">
-
-					<input type="text" class="w3-input" name="productId"
-						list="productName" id="myInput" placeholder="Enter Product Name"
-						onkeyup="filterFunction()">
+				<div class="w3-half w3-padding">
+					<input type="text" class="w3-input w3-border" name="productName"
+						list="productName" id="productId"
+						placeholder="Enter Product Name/code">
 					<datalist id="productName">
 						<c:forEach items="${products}" var="product">
-							<option value="${product.getId()}" id="pId">${product.getName()}</option>
+							<option value="${product.getId()}"   id="pId">${product.getName()}</option>
 						</c:forEach>
 					</datalist>
 				</div>
-				<div class="w3-half">
-					<button class="w3-button w3-green" onclick="getStock()">GET
-						PRODUCT</button>
+				<div class="w3-half w3-padding">
+					<button class="w3-button w3-green" onclick="getStockList(event);">GET PRODUCT</button>
 				</div>
-			</form>
-
+			
 		</div>
+		<br>
 		
 
-		<br>
-
-		<div class="w3-container">
+		
+		<div class="w3-container" style="display: none;" id="stockDetails">
 			<h5 class="w3-bar w3-pale-red w3-center ">Stock details</h5>
-			<table class="w3-table-all">
+			<table class="w3-table-all" >
 				<tr class="w3-black">
 					<th>ID</th>
 					<th>MANUFACTURER</th>
@@ -114,32 +103,59 @@ html, body, h1, h2, h3, h4, h5 {
 					<th>SELLING PRICE</th>
 					<th>DISCOUNT</th>
 					<th>GST</th>
+					<th></th>
 				</tr>
-				<c:forEach items="${stockdetails}" var="stockdetails">
-			<tr>
-				<td><a href="/biller/getstock?stockId=${stockdetails.getId()}">${stockdetails.getId()}</a></td>
-				<td>${stockdetails.getManufacturer()}</td>
-				<td>${stockdetails.getQuantity()}</td>
-				<td>${stockdetails.getSellingPrice()}</td>
-				<td>${stockdetails.getDiscount()}</td>
-				<td>${stockdetails.getGst()}</td>
-			</tr>
-		</c:forEach>
+				<%-- <c:forEach items="${stockdetails}" var="stockdetails">
+					<tr>
+						<td><a
+							href="/biller/getstock?stockId=${stockdetails.getId()}">${stockdetails.getId()}</a></td>
+						<td>${stockdetails.getManufacturer()}</td>
+						<td>${stockdetails.getQuantity()}</td>
+						<td>${stockdetails.getSellingPrice()}</td>
+						<td>${stockdetails.getDiscount()}</td>
+						<td>${stockdetails.getGst()}</td>
+						<td><input class="w3-button w3-green" type="button"
+							onclick="addToBill(event)" value="Add"></td>
+					</tr>
+				</c:forEach> --%>
 			</table>
 		</div>
-		
-		<div>
-		<h5 class="w3-bar w3-pale-red w3-center">Bill Details</h5>
-		CUSTOMER NAME <input type="text"> &emsp;&emsp; 
-		CONTACT NUMBER <input type="tel">
+		<br>
+		<hr class="w3-border">
+		<div class="w3-container">
+			<div>
+
+				<h5 class="w3-bar w3-pale-yellow w3-center">Bill Details</h5>
+				CUSTOMER NAME <input type="text"> &emsp;&emsp; CONTACT
+				NUMBER <input type="tel">
+			</div>
+
+			<br>
+
+			<div>
+				<table class="w3-table-all" id="billTable">
+					<tr class="w3-black">
+						<th>Name</th>
+						<th>Quantity</th>
+						<th>Discount</th>
+						<th>Price</th>
+					</tr>
+
+					<tr>
+						<td>Product name</td>
+						<td><input type="number" style="width: 60px;" value="1"></td>
+						<td>2%</td>
+						<td>2000</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-		
-		
-		
+
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script>
+	
 		function filterFunction() {
 			var input, filter, ul, li, a, i;
 			input = document.getElementById("myInput");
@@ -156,12 +172,52 @@ html, body, h1, h2, h3, h4, h5 {
 				}
 			}
 		}
-		function getStock() {
-			var id=document.getElementById("myInput").value;
-	/* 		window.location.assign("/biller/bill?productId="+id); */
-		}
-
 		
+	
+		function getStockList(e)
+		{
+			var productId = document.getElementById("productId").value;
+			document.getElementById("stockDetails").style.display = "block";
+			
+			var xhttp = new XMLHttpRequest();
+		    xhttp.onreadystatechange = function() {
+		         if (this.readyState == 4 && this.status == 200) {
+		             var stock=JSON.parse(this.response);
+		             console.log(stock);
+		             setStock(stock);
+		         }
+		    };
+		    xhttp.open("GET", "/biller/stockBill?productId="+productId, true);
+			xhttp.send();
+		}
+		
+		
+		function setStock(stock)
+		{
+			var stockDetails = document.getElementById("stockDetails");
+			console.log(stock.length)
+			stock.forEach(function(s){
+				stockDetails.innerHTML+="<tr>"+
+				
+				"<td>"+s.manufacturer+"</td>"+
+				"<td>"+s.quantity+"</td>"+
+				"<td>"+s.sellingPrice+"</td>"+
+				"<td>"+s.discount+"</td>"+
+				"<td>"+s.gst+"</td>"+
+				"</tr>"	
+			})
+			}
+		
+		
+		//need to work
+		function addToBill() {
+			var table = document.getElementById("billTable");
+			var row = table.insertRow();
+			var cell1 = row.insertCell();
+			var cell2 = row.insertCell();
+			cell1.innerHTML = "NEW CELL1";
+			cell2.innerHTML = "NEW CELL2";
+		}
 	</script>
 </body>
 </html>
