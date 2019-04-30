@@ -38,15 +38,14 @@ public class ClientService {
 
 	}
 
-<<<<<<< HEAD
 	public void saveStock(Stock stock) {
-		ResponseEntity<Stock> response = restTemplate.postForEntity(EndPointConstant.PRODUCT_SERVICE_URI + "stock",
+		restTemplate.postForEntity(EndPointConstant.PRODUCT_SERVICE_URI + "stock",
 				stock, Stock.class);
 		
 	}
 
 	
-=======
+
 	public List<Product> getAllProducts() {
 
 		ResponseEntity<List<Product>> response = restTemplate.exchange(
@@ -63,6 +62,6 @@ public class ClientService {
 				});
 		return responses.getBody();
 	}
->>>>>>> 18d765e98f67376c92d4857c30b1f44f47e8410d
+
 
 }

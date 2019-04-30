@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests().antMatchers("/").permitAll().antMatchers("api/")
 				.hasAnyRole("ADMIN", "MANAGER", "BILLER").and().formLogin().loginPage("/").successHandler(authenticationProvider)
-				.failureUrl("/api/login?error=true").permitAll().and().logout()
+				.failureUrl("/").permitAll().and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/api/welcome?logout=true")
 				.deleteCookies("JSESSIONID").invalidateHttpSession(true).permitAll().and().exceptionHandling()
 				.accessDeniedPage("/api/403").and().csrf().disable();

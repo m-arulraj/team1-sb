@@ -12,23 +12,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.virtusa.stockbook_biller_service.domain.Bill;
 import com.virtusa.stockbook_biller_service.service.BillerService;
 
 @RestController
+@RequestMapping(value="/api")
 public class BillerResource {
 	@Autowired
 	BillerService billerService;
 
-	@PostMapping(value = "/api/bill")
-	public ResponseEntity<String> saveBill(@RequestBody Bill bill) throws URISyntaxException {
-		// Bill billres = billerService.saveBill(bill);
+	@PostMapping(value = "/bill")
+	public ResponseEntity<Bill> saveBill(@RequestBody Bill bill) throws URISyntaxException {
+		 
 		URI uri = new URI("/api/bill/" + billerService.saveBill(bill).getId());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(uri);
-		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<Bill>(headers, HttpStatus.CREATED);
 	}
  
 	@GetMapping(value = "/api/bill/{id}")

@@ -40,7 +40,7 @@ public class BillerApplicationIntegrationTest {
 	public void testForSavingBill() throws Exception {
 		Bill bill = new Bill();
 		bill.setName("ramu");
-		bill.setConatct(1236);
+		bill.setContact(1236);
 		bill.setGrandTotal(450.2);
 		bill.setBillerName("gopi");
 		bill.setBillDate("2018-01-11");

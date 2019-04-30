@@ -24,42 +24,44 @@ import com.virtusa.stockbookproductservice.service.StockService;
 public class StockResource {
 
 	Logger logger = LoggerFactory.getLogger(StockResource.class);
-	
+
 	@Autowired
 	private StockService stockService;
-	
-	//save stock --done
-	@PostMapping("stock") 
-	public ResponseEntity<Stock> saveStock(@RequestBody Stock stock) throws URISyntaxException
-	{
+
+	// save stock --done
+	@PostMapping("stock")
+	public ResponseEntity<Stock> saveStock(@RequestBody Stock stock) throws URISyntaxException {
 		logger.debug(">>>>entered to post method save stock");
-		
+
 		Stock theStock = stockService.saveStock(stock);
-	
-		return ResponseEntity.created(new URI("/api/stock/"+theStock.getId())).build();
+
+		return ResponseEntity.created(new URI("/api/stock/" + theStock.getId())).build();
 	}
-	
-	//get stock by product id --done
+
+	// get stock by product id --done
 	@GetMapping("/stock/product/{id}")
-	public ResponseEntity<List<Stock>> getStockByProductId(@PathVariable("id") Long id)
-	{
+	public ResponseEntity<List<Stock>> getStockByProductId(@PathVariable("id") Long id) {
 		return ResponseEntity.ok().body(stockService.getStockListByProductId(id));
 	}
-	
-	//get stock by id --done
+
+	// get stock by id --done
 	@GetMapping("/stock/{id}")
-	public ResponseEntity<Stock> getStockById(@PathVariable("id") Long id)
-	{
+	public ResponseEntity<Stock> getStockById(@PathVariable("id") Long id) {
 		return ResponseEntity.ok().body(stockService.getStockById(id));
 	}
-	
-	//update stock --done
-	@PutMapping("/stock/{id}") 
-	public ResponseEntity<Stock> updateStockByProductId(@RequestBody Stock stock)
-	{
-		return ResponseEntity.ok().body(stockService.updateStockByStockId(stock));				
+
+	// update stock --done
+	@PutMapping("/stock/{id}")
+	public ResponseEntity<Stock> updateStockByProductId(@RequestBody Stock stock) {
+		return ResponseEntity.ok().body(stockService.updateStockByStockId(stock));
 	}
-	
-	
-	
+
+	@PutMapping("/stock/{id}/quantity/{quantity}")
+	public Stock updateStockQuantity(@PathVariable("id") Long stockId, @PathVariable("quantity") Long quantity) {
+
+		Stock stock = stockService.updateStockQuantity(stockId, quantity);
+
+		return stock;
+	}
+
 }

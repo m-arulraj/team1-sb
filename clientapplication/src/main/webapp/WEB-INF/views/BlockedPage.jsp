@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>ADMIN SERVICE</h1>
+<h3>User Blocked Successfully</h3>
+<a href="/">Click Here</a>
 </body>
 </html>

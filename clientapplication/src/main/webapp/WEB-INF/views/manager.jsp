@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+f<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Manager</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -26,7 +26,7 @@ html, body, h1, h2, h3, h4, h5 {
 			<i class="fa fa-bars"></i> &nbsp;Menu
 		</button>
 		<span class="w3-bar-item w3-right">Welocome To Stock Book</span>
-		<span class="w3-bar-item w3-center"> Manager Page</span>
+		<span class="w3-bar-item w3-center"> MANAGER PAGE</span>
 	</div>
 
 	<!-- Sidebar/menu -->
@@ -39,7 +39,7 @@ html, body, h1, h2, h3, h4, h5 {
 					style="width: 46px"> -->
 			</div>
 			<div class="w3-col s8 w3-bar">
-				<span>Welcome <strong>User</strong></span><br><!--  <a href="#"
+				<span>WELCOME <strong>MANAGER</strong></span><br><!--  <a href="#"
 					class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a> <a
 					href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
 				<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a> -->
@@ -47,13 +47,13 @@ html, body, h1, h2, h3, h4, h5 {
 		</div>
 		<hr>
 		<div class="w3-container">
-			<h5>Dashboard</h5>
+			<h5>DASHBOARD</h5>
 		</div>
 		<div class="w3-bar-block">
 			<!-- <a href="#"
 				class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
 				onclick="w3_close()" title="close menu"><i
-				class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> --> <a href="/pavan"
+				class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> --> <a href="/addproduct"
 				class="w3-bar-item w3-button w3-padding "><i
 				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Product</a> <!-- <a href="/biller"
 				class="w3-bar-item w3-button w3-padding"><i
@@ -61,24 +61,11 @@ html, body, h1, h2, h3, h4, h5 {
 				class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-eye fa-fw"></i>&nbsp; View Stock</a><!--  <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
-<<<<<<< HEAD
+
 				class=" fa fa-ban fa-fw"></i>&nbsp; Block user </a> --> <a
 				href="/" class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-sign-out"></i>&nbsp; Logout</a>
-			<!--  <a href="#"
-=======
-				class=" fa fa-ban fa-fw"></i>&nbsp; Block user </a> --> <a href="#"
-				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-user-circle-o fa-fw"></i>&nbsp; About me</a> <!-- <a href="#"
-				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-bell fa-fw"></i>&nbsp; News</a> <a href="#"
->>>>>>> 18d765e98f67376c92d4857c30b1f44f47e8410d
-				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-bank fa-fw"></i>&nbsp; General</a> <a href="#"
-				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-history fa-fw"></i>&nbsp; History</a> <a href="#"
-				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-cog fa-fw"></i>&nbsp; Settings</a><br> <br> -->
+			
 		</div>
 	</nav>
 
@@ -95,14 +82,14 @@ html, body, h1, h2, h3, h4, h5 {
 		<!-- Header -->
 		<header class="w3-container" style="padding-top: 22px">
 			<h5>
-				<b><i class="fa fa-dashboard"></i> My Dashboard</b>
+				<b><i class="fa fa-dashboard">  </i>   DASHBOARD</b>
 			</h5>
 		</header>
 
 		<div class="w3-row-padding w3-margin-bottom">
 			<div class="w3-quarter">
 				<div class="w3-container w3-red w3-padding-16">
-					<a href="/pavan"
+					<a href="/addproduct"
 					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
 					<!--  <div class="w3-right">
           <h3>52</h3>
@@ -111,17 +98,7 @@ html, body, h1, h2, h3, h4, h5 {
 					<h4>Add Product</h4>
 				</div>
 			</div>
-			<!-- <div class="w3-quarter">
-				<div class="w3-container w3-blue w3-padding-16">
-					<a href="/biller"
-					class="w3-bar-item w3-button"><i class="fa fa-refresh" style="font-size: 48px; color: black"></i></a>
-					<div class="w3-left">
-						<!-- <h3>99</h3
-					</div>
-					<div class="w3-clear"></div>
-					<h4>Upadte Product</h4>
-				</div>
-			</div> -->
+			
 			<div class="w3-quarter">
 				<div class="w3-container w3-teal w3-padding-16">
 					<div class="w3-left">
@@ -135,73 +112,20 @@ html, body, h1, h2, h3, h4, h5 {
 					<h4>View Stock</h4>
 				</div>
 			</div>
-			<!-- <div class="w3-quarter">
-				<div class="w3-container w3-brown w3-text-white w3-padding-16">
-					<div class="w3-left">
-						<i class="fa fa-bar-chart w3-xxxlarge"></i>
-					</div>
-					<div class="w3-right">
-						<h3>50</h3>
-					</div>
-					<div class="w3-clear"></div>
-					<h4>View Profit </h4>
-				</div>
-			</div>
-		</div> -->
+			
 
 		<div class="w3-panel">
 			<div class="w3-row-padding" style="margin: 0 -16px">
-				<!-- <div class="w3-third">
-					<h5>Regions</h5>
-					<img src="/w3images/region.jpg" style="width: 100%"
-						alt="Google Regional Map">
-				</div>
-				<div class="w3-twothird">
-					<h5>Feeds</h5>
-					<table class="w3-table w3-striped w3-white">
-						<tr>
-							<td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-							<td>New record, over 90 views.</td>
-							<td><i>10 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-bell w3-text-red w3-large"></i></td>
-							<td>Database error.</td>
-							<td><i>15 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
-							<td>New record, over 40 users.</td>
-							<td><i>17 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-comment w3-text-red w3-large"></i></td>
-							<td>New comments.</td>
-							<td><i>25 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
-							<td>Check transactions.</td>
-							<td><i>28 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
-							<td>CPU overload.</td>
-							<td><i>35 mins</i></td>
-						</tr>
-						<tr>
-							<td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
-							<td>New shares.</td>
-							<td><i>39 mins</i></td>
-						</tr>
-					</table>-->
+				
 				</div>
 			</div>
 		</div> 
 		<hr>
 		<div class="w3-container">
 			<h5>Product Quantity Available</h5>
-			<p>Fast Moving Item</p>
+			<h3><a href="/fastmoving">Fast Moving Item</a></h3>
+			
+			
 			<div class="w3-grey">
 			
 				<div class="w3-container w3-center w3-padding w3-red"
@@ -210,7 +134,7 @@ html, body, h1, h2, h3, h4, h5 {
 
 			
 
-			<p>Slow Moving Item</p>
+			<h3><a href="/">Slow Moving  Item</a></h3>
 			<div class="w3-grey">
 				<div class="w3-container w3-center w3-padding w3-green"
 					style="width: 75%">75</div>
@@ -330,14 +254,7 @@ html, body, h1, h2, h3, h4, h5 {
 		</div> -->
 
 		<!-- Footer -->
-		<footer class="w3-container w3-padding-16 w3-light-grey">
-			<h4>FOOTER</h4>
-			<p>
-				Powered by <a href="https://www.w3schools.com/w3css/default.asp"
-					target="_blank">w3.css</a>
-			</p>
-		</footer>
-
+		
 		<!-- End page content -->
 	</div>
 

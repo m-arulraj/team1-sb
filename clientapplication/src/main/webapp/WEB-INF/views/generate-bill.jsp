@@ -66,7 +66,6 @@ html, body, h1, h2, h3, h4, h5 {
 }
 </style>
 <body class="w3-light-grey">
-
 	<%@include file="biller-fragments/util.jsp"%>
 	<%@include file="biller-fragments/biller-header.jsp"%>
 
@@ -77,46 +76,77 @@ html, body, h1, h2, h3, h4, h5 {
 	<br>
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
-
 		<div class="w3-row-padding ">
-			<div class="w3-half">
-				<input type="text" class="w3-input" name="product"
-					list="productName" id="myInput" onkeyup="filterFunction()"
-					placeholder="Enter Product Name" />
-				<datalist name={} id="productName">
-				<c:forEach items="${products}" var="product">
-					<option name="${product.getId()}">${product.getName()}</option>
-				</c:forEach>
-				</datalist>
-			</div>
-			<div class="w3-half">
-				<button class="w3-button w3-green" onclick="getStock()">Get Product</button>
-			</div>
+			
+			
+			
+			
+			<form action="/biller/stockBill">
+				<div class="w3-half">
+
+					<input type="text" class="w3-input" name="productId"
+						list="productName" id="myInput" placeholder="Enter Product Name"
+						onkeyup="filterFunction()">
+					<datalist id="productName">
+						<c:forEach items="${products}" var="product">
+							<option value="${product.getId()}" id="pId">${product.getName()}</option>
+						</c:forEach>
+					</datalist>
+				</div>
+				<div class="w3-half">
+					<button class="w3-button w3-green" onclick="getStock()">GET
+						PRODUCT</button>
+				</div>
+			</form>
+
 		</div>
-		<br>
 		
+
+		<br>
+
 		<div class="w3-container">
 			<h5 class="w3-bar w3-pale-red w3-center ">Stock details</h5>
 			<table class="w3-table-all">
 				<tr class="w3-black">
-					<th>Date</th>
-					<th>Quantity</th>
-					<th>Threshold</th>
-					<th>Action</th>
+					<th>ID</th>
+					<th>MANUFACTURER</th>
+					<th>QUANTITY</th>
+					<th>SELLING PRICE</th>
+					<th>DISCOUNT</th>
+					<th>GST</th>
 				</tr>
-				
+				<c:forEach items="${stockdetails}" var="stockdetails">
+			<tr>
+				<td><a href="/biller/getstock?stockId=${stockdetails.getId()}">${stockdetails.getId()}</a></td>
+				<td>${stockdetails.getManufacturer()}</td>
+				<td>${stockdetails.getQuantity()}</td>
+				<td>${stockdetails.getSellingPrice()}</td>
+				<td>${stockdetails.getDiscount()}</td>
+				<td>${stockdetails.getGst()}</td>
+			</tr>
+		</c:forEach>
 			</table>
 		</div>
-
-
+		
+		<div>
+		<h5 class="w3-bar w3-pale-red w3-center">Bill Details</h5>
+		CUSTOMER NAME <input type="text"> &emsp;&emsp; 
+		CONTACT NUMBER <input type="tel">
+		</div>
+		
+		
+		
 	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script>
 		function filterFunction() {
 			var input, filter, ul, li, a, i;
 			input = document.getElementById("myInput");
 			filter = input.value.toUpperCase();
 			div = document.getElementById("myDropdown");
-			a = div.getElementsByTagName("a");
+			a = div.getElementByTagName("a");
+
 			for (i = 0; i < a.length; i++) {
 				txtValue = a[i].textContent || a[i].innerText;
 				if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -126,8 +156,12 @@ html, body, h1, h2, h3, h4, h5 {
 				}
 			}
 		}
+		function getStock() {
+			var id=document.getElementById("myInput").value;
+	/* 		window.location.assign("/biller/bill?productId="+id); */
+		}
+
+		
 	</script>
-
-
 </body>
 </html>

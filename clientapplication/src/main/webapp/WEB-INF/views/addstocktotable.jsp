@@ -69,7 +69,7 @@ input[type=submit]:hover {
 </head>
 <body>
 
-	<h3>STOCK FORM</h3>
+	<h1 align="center">STOCK FORM</h1>
 
 	<div class="container">
 		<form:form action="/addstocktotable" align="center" modelAttribute="stockdetails" >

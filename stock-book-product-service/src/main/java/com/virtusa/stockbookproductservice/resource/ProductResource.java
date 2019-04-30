@@ -2,6 +2,7 @@ package com.virtusa.stockbookproductservice.resource;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,10 +57,17 @@ public class ProductResource {
 		return new ResponseEntity<Product>(theProduct, HttpStatus.OK);
 	}
 
-	//delete product --done
+	// delete product --done
 	@DeleteMapping("/product/{id}")
 	public ResponseEntity<Product> deleteProductById(@PathVariable("id") Long id) {
 		Product theProduct = productService.deleteProductById(id);
-			return new ResponseEntity<Product>(theProduct, HttpStatus.OK);
+		return new ResponseEntity<Product>(theProduct, HttpStatus.OK);
+	}
+
+	@GetMapping("/fastmoving")
+	public List<Product> fastMovingItem() {
+		List<Product> products = productService.getAllProducts();
+             
+		return products;
 	}
 }

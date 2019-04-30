@@ -19,10 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.virtusa.clientapplication.domain.Category;
 import com.virtusa.clientapplication.domain.Product;
 import com.virtusa.clientapplication.domain.Stock;
-<<<<<<< HEAD
-=======
+
 import com.virtusa.clientapplication.domain.User;
->>>>>>> 18d765e98f67376c92d4857c30b1f44f47e8410d
 import com.virtusa.clientapplication.service.ClientService;
 
 @Controller
@@ -73,8 +71,6 @@ public class ClientResource {
 		return mav;
 	}
 
-	
-
 	@RequestMapping(value = "/registermanager", method = RequestMethod.GET)
 	public String registerManager(Model model) {
 		model.addAttribute("user", new User());
@@ -97,28 +93,15 @@ public class ClientResource {
 	}
 
 	@RequestMapping(value = "/add/product/table", method = RequestMethod.POST)
-<<<<<<< HEAD
 	public ModelAndView addProductToTable(@ModelAttribute("product") Product product, HttpSession session) {
 
 		ModelAndView mav = new ModelAndView("addstock");
 
 		mav.addObject(product.getName());
 		mav.addObject(product.getDescription());
-
-		logger.debug(product);
-=======
-	public ModelAndView addProductToTable(@ModelAttribute("product") Product product) {
-
-		ModelAndView mav = new ModelAndView("addproduct");
-
-		mav.addObject(product.getName());
-		mav.addObject(product.getDescription());
 		mav.addObject(product.getCategory().getId());
 
 		logger.debug(product);
-
-		Product prod = clientService.addproduct(product);
->>>>>>> 18d765e98f67376c92d4857c30b1f44f47e8410d
 
 		Product prod = clientService.addproduct(product);
 		mav.addObject("productdetails", prod);
@@ -135,7 +118,6 @@ public class ClientResource {
 		return mav;
 	}
 
-<<<<<<< HEAD
 	@RequestMapping(value = "/addstocktotable")
 	public String addStockToTable(@ModelAttribute("stockdetails") Stock stock, HttpSession session) {
 
@@ -148,16 +130,22 @@ public class ClientResource {
 		return "stockadded";
 	}
 
-=======
 	@RequestMapping(value = "/viewstockdetails", method = RequestMethod.GET)
 	public ModelAndView viewStockDetails(@RequestParam("productId") Long id) {
 
 		ModelAndView mav = new ModelAndView("stockdetails");
 		List<Stock> stock = clientService.getStockList(id);
-		//stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList());
-		mav.addObject("stockdetails", stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList()));
+		// stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList());
+		mav.addObject("stockdetails",
+				stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList()));
 		return mav;
 
 	}
->>>>>>> 18d765e98f67376c92d4857c30b1f44f47e8410d
+	
+	@RequestMapping(value="/managerhome")
+	public String homePath() {
+		
+		return "manager";
+	}
+
 }

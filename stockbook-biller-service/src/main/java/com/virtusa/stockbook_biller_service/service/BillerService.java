@@ -25,7 +25,9 @@ public class BillerService {
 		return i -> LocalDate.parse(i.getBillDate(), formatter).getMonthValue() == month;
 	}
 	public Bill saveBill(Bill bill) {
-		return billRepository.save(bill);
+		Bill bill2 = billRepository.save(bill);
+		
+		return bill2;
 	}
 
 	public Bill getBillById(int id) {

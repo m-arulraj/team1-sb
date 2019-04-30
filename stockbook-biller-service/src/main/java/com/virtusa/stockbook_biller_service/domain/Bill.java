@@ -22,7 +22,7 @@ public class Bill {
 	@Column(name="name")
 	String name;
 	@Column(name="contact")
-	int conatct;
+	int contact;
 	@Column(name="biller_name")
 	String billerName;
 	@Column(name="grand_total")
@@ -41,11 +41,12 @@ public class Bill {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getConatct() {
-		return conatct;
+	
+	public int getContact() {
+		return contact;
 	}
-	public void setConatct(int conatct) {
-		this.conatct = conatct;
+	public void setContact(int contact) {
+		this.contact = contact;
 	}
 	public String getBillerName() {
 		return billerName;

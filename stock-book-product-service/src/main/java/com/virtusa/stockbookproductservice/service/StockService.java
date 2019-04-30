@@ -97,4 +97,19 @@ public class StockService {
 
 	}
 
+	public Stock updateStockQuantity(Long stockId, Long quantity) {
+		Optional<Stock> stock = stockRepository.findById(stockId);
+		if(stock.isPresent()) {
+			Stock theStock=stock.get();
+			Long qty=theStock.getQuantity();
+			theStock.setQuantity(qty-quantity);
+			return stockRepository.save(theStock);
+		}
+		else {
+			System.out.println("no stock present for that id");
+			return null;
+		}
+		
+	}
+
 }

@@ -11,6 +11,23 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <style type="text/css">
+body {
+	background-image:
+		url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdXfxaqdRGG0NwHndf-T7GULaHxmo5oeMgY170e7O4ywpL6DG-Q");
+	
+	background-size:cover;
+	background-repeat: no-repeat;
+}
+</style>
+<style type="text/css">
+div {
+	position: absolute;
+	top: 35%;
+	right: 17%;
+	left: 29%;
+}
+</style>
+<style type="text/css">
 div {
 	position: absolute;
 	top: 35%;
@@ -29,7 +46,7 @@ div {
 				Product Name: <form:input type="text" path="name" />&emsp;&emsp;
 				Description: <form:input type="text" path="description" />
 			&emsp;&emsp;
-			
+
 			<br>
 			<br>
 			<br>

@@ -5,15 +5,13 @@
 <html>
 <head>
 <style type="text/css">
-body{
-background-image:
- url("https://media.istockphoto.com/photos/supermarket-aisle-with-empty-green-shopping-cart-picture-id817240836?k=6&m=817240836&s=612x612&w=0&h=I_77CJZV_tl3kdN-R1yav7jIa4lOs4JgqZZH4OyXT_s=");
-
-height:100%;
-background-size:99%;
-background-repeat:no-repeat; 
+body {
+	background-image:
+		url("https://media.istockphoto.com/photos/supermarket-aisle-with-empty-green-shopping-cart-picture-id817240836?k=6&m=817240836&s=612x612&w=0&h=I_77CJZV_tl3kdN-R1yav7jIa4lOs4JgqZZH4OyXT_s=");
+	height: 100%;
+	background-size: 99%;
+	background-repeat: no-repeat;
 }
-
 </style>
 <style type="text/css">
 div {
@@ -31,6 +29,8 @@ div {
 <body>
 	<table border="1" align="center">
 		<tr>
+
+			<th>ID</th>
 			<th>MANUFACTURER</th>
 			<th>QUANTITY</th>
 			<th>ADDED DATE</th>
@@ -41,6 +41,7 @@ div {
 		</tr>
 		<c:forEach items="${stockdetails}" var="stockdetails">
 			<tr>
+				<td><a href="/biller/getstock?stockId=${stockdetails.getId()}">${stockdetails.getId()}</a></td>
 				<td>${stockdetails.getManufacturer()}</td>
 				<td>${stockdetails.getQuantity()}</td>
 				<td>${stockdetails.getDate()}</td>

@@ -54,6 +54,9 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 		if (!password.equals(user.getPassword())) {
 			throw new BadCredentialsException("Wrong password.");
 		}
+		if(user.getEnabled()==0) {
+			throw new BadCredentialsException("UserBlocked");
+		}
 
 		ResponseEntity<List<Authorities>> roleResponse = restTemplate.exchange(
 				EndPointConstant.ADMIN_SERVICE_URI + "users/user/roles/" + name, HttpMethod.GET, null,
@@ -90,7 +93,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 			} else if (grantedAuthority.getAuthority().equals("ROLE_BILLER")) {
 				hasBillerRole = true;
 				break;
-			} else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
+			} else if (grantedAuthority.getAuthority().equals("MANAGER")) {
 				hasManagerRole = true;
 				break;
 			}

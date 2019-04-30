@@ -26,7 +26,7 @@ html, body, h1, h2, h3, h4, h5 {
 			<i class="fa fa-bars"></i> &nbsp;Menu
 		</button>
 		<span class="w3-bar-item w3-right">Welocome To Stock Book</span> <span
-			class="w3-bar-item w3-center"> Admin</span>
+			class="w3-bar-item w3-center"> ADMIN</span>
 	</div>
 
 	<!-- Sidebar/menu -->
@@ -53,7 +53,7 @@ html, body, h1, h2, h3, h4, h5 {
 				 <a href="/viewstock" class="w3-bar-item w3-button w3-padding">
 				 <i class="fa fa-eye fa-fw"></i>&nbsp; View Stock</a>
 				
-				 <a href="#"
+				 <a href="/block"
 				class="w3-bar-item w3-button w3-padding"><i
 				class=" fa fa-ban fa-fw"></i>&nbsp; Block user </a> 
 				
