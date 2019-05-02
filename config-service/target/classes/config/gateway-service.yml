@@ -16,11 +16,11 @@ spring:
         - id: admin-service 
           uri: lb://admin-service
           predicates:
-          - Path=/api/user/**,/api/user/{id}/**,/api/users/**,/api/users/user/{id}/**,/api/users/user/{username}/**,/api/users/user/roles/{username}/**
+          - Path=/api/user/**,/api/profit/**,/api/user/{id}/**,/api/users/**,/api/users/user/{id}/**,/api/users/user/{username}/**,/api/users/user/roles/{username}/**
         - id: biller-service 
           uri: lb://biller-service
           predicates:
-          - Path=/api/bill/**
+          - Path=/api/bill/**,/api/bills/**
         - id: product-service 
           uri: lb://product-service
           predicates:

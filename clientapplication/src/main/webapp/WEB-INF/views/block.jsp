@@ -40,7 +40,7 @@ div {
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input type="submit"
 				value="BLOCK" /> &emsp;&emsp;&emsp;
 
-                <!-- <h3><a href="/managerhome">HOME</a></h3> -->
+                <h3><a href="/admin">HOME</a></h3>
 		</form>
 		</div>
 </body>
