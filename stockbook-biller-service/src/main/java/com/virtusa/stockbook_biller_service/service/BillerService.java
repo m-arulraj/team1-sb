@@ -59,5 +59,9 @@ public class BillerService {
 		
 		
 	}
+	public List<Bill> getAllBills() {
+		List<Bill> bills = billRepository.findAll();
+		 return bills;
+	}
 
 }

@@ -8,15 +8,13 @@
 <meta charset="ISO-8859-1">
 <title>Product Details</title>
 <style type="text/css">
-body{
-background-image:
- url("https://media.istockphoto.com/photos/supermarket-aisle-with-empty-green-shopping-cart-picture-id817240836?k=6&m=817240836&s=612x612&w=0&h=I_77CJZV_tl3kdN-R1yav7jIa4lOs4JgqZZH4OyXT_s=");
-
-height:100%;
-background-size:99%;
-background-repeat:no-repeat; 
+body {
+	background-image:
+		url("https://media.istockphoto.com/photos/supermarket-aisle-with-empty-green-shopping-cart-picture-id817240836?k=6&m=817240836&s=612x612&w=0&h=I_77CJZV_tl3kdN-R1yav7jIa4lOs4JgqZZH4OyXT_s=");
+	height: 100%;
+	background-size: 99%;
+	background-repeat: no-repeat;
 }
-
 </style>
 <style type="text/css">
 div {
@@ -32,17 +30,17 @@ div {
 	<div align="center">
 
 		<form name="form1" action="/viewstockdetails">
-			<br> Select Product : <select name="productId" >
-				<option>-----Select Product-----</option>
-				<c:forEach items="${productlist}" var="product" >
+			<br> Select Product : <select name="productId">
+				
+				<c:forEach items="${productlist}" var="product">
 					<option value="${product.getId()}">${product.getName()}</option>
 				</c:forEach>
 			</select> <br> <br>&nbsp; &nbsp; &nbsp;
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input type="submit"
 				value="ViewStock" /> &emsp;&emsp;&emsp;
-
-                <!-- <h3><a href="/managerhome">HOME</a></h3> -->
+			<h3><a href="/admin">HOME</a></h3>
 		</form>
+
 	</div>
 	<br />
 

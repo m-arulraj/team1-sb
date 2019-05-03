@@ -142,6 +142,9 @@
 				<button type="submit" class="btn btn-success btn-lg btn-block">Register
 					Now</button>
 			</div>
+			<div align="center">
+				<a href="/admin"> HOME</a>
+			</div>
 		</form:form>
 
 	</div>

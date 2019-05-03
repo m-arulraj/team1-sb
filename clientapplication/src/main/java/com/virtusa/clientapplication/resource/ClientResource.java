@@ -147,5 +147,10 @@ public class ClientResource {
 		
 		return "manager";
 	}
-
+	
+	@RequestMapping(value="/errorpage")
+	public String error() {
+		
+		return "errorpage2";
+	}
 }

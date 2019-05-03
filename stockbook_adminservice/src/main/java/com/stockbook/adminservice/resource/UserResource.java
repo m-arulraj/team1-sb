@@ -1,5 +1,6 @@
 package com.stockbook.adminservice.resource;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,6 +91,22 @@ public class UserResource {
 		List<Authorities> rolesList = authoritiesService.getAllRoles(username);
 		return rolesList;
 
+	}
+
+	@RequestMapping(value = "/profit", method = RequestMethod.GET)
+	public List<Double> profit() {
+		List<Double> TotalCP = userService.getTotalCP();
+		List<Double> TotalSP = userService.getTotalSP();
+		List<Double> profit = new ArrayList<Double>();
+		for (int i = 0; i < 12; i++) {
+			Double res;
+			
+				res = (TotalSP.get(i) - TotalCP.get(i));
+				profit.add(res);
+			
+
+		}
+		return profit;
 	}
 
 }

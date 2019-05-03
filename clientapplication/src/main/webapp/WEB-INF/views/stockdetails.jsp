@@ -54,5 +54,10 @@ div {
 	<br>
 	<br>
 	<br>
+	
+	<div align="center">
+	<h3><a href="/viewstock">BACK</a></h3>
+	<h3><a href="/admin">HOME</a></h3>
+	</div>
 </body>
 </html>
