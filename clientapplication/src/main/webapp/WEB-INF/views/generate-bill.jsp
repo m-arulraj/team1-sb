@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <title>Generate Bill</title>
@@ -102,41 +102,52 @@ html, body, h1, h2, h3, h4, h5 {
 		<br>
 		<hr class="w3-border">
 		<div class="w3-container w3-border">
-			<form action="/biller/add/bill" method="post">
-			<div >
+			<form:form action="/biller/add/bill" method="post" onsubmit="submission(event)"
+				modelAttribute="billdata">
 
-				<h5 class="w3-bar w3-pale-yellow w3-center">Bill Details</h5>
-				CUSTOMER NAME <input type="text" required name="cName"> &emsp;&emsp; CONTACT
-				NUMBER <input type="tel" required name="cContact">
-			</div>
 
-			<br>
 
-			<div>
-				<table class="w3-table-all" id="billTable">
-					<tr class="w3-black">
-						<th>&nbsp;</th>
-						<th>Name</th>
-						<th>Quantity</th>
-						<th>Price</th>
-						<th>Discount</th>
-						<th>Gst</th>
-						<th>Total</th>
-					</tr>
+				<div>
 
-				</table>
-			</div>
-			<br><br>
-			<div class="w3-container w3-right w3-navbar">
-				<label class=" w3-row"><b>Grand Total :</b></label>
-				<input id="grandTotal" class="w3-row w3-margin w3-border" value="0" type="text" name="grandTotal">
-			<input type="submit" class="w3-button w3-blue 	" value="Generate Bill">
-			</div>
-			<br>
-			</form>
+					<h5 class="w3-bar w3-pale-yellow w3-center">Bill Details</h5>
+					CUSTOMER NAME
+					<form:input type="text" required="" name="cName" path="name"></form:input>
+					&emsp;&emsp; CONTACT NUMBER
+					<form:input type="tel" required="" name="cContact" path="contact"></form:input>
+				</div>
+
+				<br>
+
+				<div>
+					<table class="w3-table-all" id="billTable">
+						<tr class="w3-black">
+							<th>&nbsp;</th>
+							<th>Name</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Discount</th>
+							<th>Gst</th>
+							<th>Total</th>
+						</tr>
+
+					</table>
+				</div>
+				<br>
+				<br>
+				<div class="w3-container w3-right w3-navbar">
+					<label class=" w3-row"><b>Grand Total :</b></label>
+					<form:input id="grandTotal" class="w3-row w3-margin w3-border"
+						value="0" type="text" name="grandTotal" path="grandTotal"></form:input>
+					<input type="submit" class="w3-button w3-blue"
+						value="Generate Bill "/>
+				</div>
+				
+				
+				
+				<br>
+			</form:form>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -157,10 +168,7 @@ html, body, h1, h2, h3, h4, h5 {
 				}
 			}
 		}
-			
-		
-		
-		
+
 		var stock;
 		var product;
 		function getProduct(e) {
@@ -170,15 +178,15 @@ html, body, h1, h2, h3, h4, h5 {
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					 product = JSON.parse(this.response);
-					
+					product = JSON.parse(this.response);
+
 					setStock(product.stockList);
 				}
 			};
 			xhttp.open("GET", "/product?productId=" + productId, true);
 			xhttp.send();
 		}
-		
+
 		function setStock(stock) {
 			var stockDetails = document.getElementById("stockTable");
 			stockDetails.innerHTML = "";
@@ -186,21 +194,33 @@ html, body, h1, h2, h3, h4, h5 {
 					+ "<tr class='w3-black'>" + "<th>ID</th>"
 					+ "<th>MANUFACTURER</th>" + "<th>QUANTITY</th>"
 					+ "<th>SELLING PRICE</th>" + "<th>DISCOUNT</th>"
-					+ "<th>GST</th>" + "<th>Action</th>" + "</tr>";
+					+ "<th>GST</th>" + "<th>Action</th>" + " </tr>";
 
-			console.log(stock.length)
-			stock.forEach(function(s) {
-				stockDetails.innerHTML += "<tr>" +
-				"<td>" + s.id +
-				"<td>" + s.manufacturer + "</td>" + "<td>" + s.quantity
-						+ "</td>" + "<td>" + s.sellingPrice + "</td>" + "<td>"
-						+ s.discount + "</td>" + "<td>" + s.gst + "</td>"
-						+"<td><input type='button' value='Add' class='w3-button w3-green'"+
-						
-						"onclick='addToBill("+JSON.stringify(s)+")'></td>"+ 
-						"</tr>"
-			})
-			
+			stock
+					.forEach(function(s) {
+						stockDetails.innerHTML += "<tr>"
+								+ "<td>"
+								+ s.id
+								+ "<td>"
+								+ s.manufacturer
+								+ "</td>"
+								+ "<td>"
+								+ s.quantity
+								+ "</td>"
+								+ "<td>"
+								+ s.sellingPrice
+								+ "</td>"
+								+ "<td>"
+								+ s.discount
+								+ "</td>"
+								+ "<td>"
+								+ s.gst
+								+ "</td>"
+								+ "<td><input type='button' value='Add' class='w3-button w3-green'"+
+								"onclick='addToBill(" + JSON.stringify(s)+")'></td>" +
+								+"</tr>"
+					})
+
 		}
 
 		var cell6;
@@ -215,61 +235,77 @@ html, body, h1, h2, h3, h4, h5 {
 			var cell4 = row.insertCell();
 			var cell5 = row.insertCell();
 			cell6 = row.insertCell();
-			cell0.innerHTML = "<input type='button' class='w3-button ' value='&#10060;'onclick='remove(this)'>";
-			cell1.innerHTML = "<td>"+product.name+"</td>";
-			cell2.innerHTML = "<input type='number' value='1' style='width:60;' min='1' onchange='amount(event,this,"+JSON.stringify(s)+")'>";
 			
-			cell3.innerHTML = "<td>"+s.sellingPrice+"</td>";
-			cell4.innerHTML =  "<td>"+s.discount+"</td>";
-			cell5.innerHTML =  "<td>"+s.gst+"</td>";
-			cell6.innerHTML =  "<td>"+(s.sellingPrice + s.gst -s.discount)+"</td>";
+			cell0.innerHTML = "<input type='button' class='w3-button ' value='&#10060;'onclick='remove(this)'>";
+			cell1.innerHTML = "<td>" + product.name + "</td>";
+			cell2.innerHTML = "<input type='number' class='qt' value='1' style='width:60;' min='1' name='quantity' path='quantity' onchange='amount(event,this,"
+					+ JSON.stringify(s) + ")'>";
+			
+			/* cell2.classList.add("qt"); */
+	
+			cell3.innerHTML = "<td>" + s.sellingPrice + "</td>";
+			cell4.innerHTML = "<td>" + s.discount + "</td>";
+			cell5.innerHTML = "<td>" + s.gst + "</td>";
+			cell6.innerHTML = "<td>" + (s.sellingPrice + s.gst - s.discount)
+					+ "</td>";
+					
 			cell6.classList.add("count");
-			gt = s.sellingPrice + s.gst -s.discount;
-			document.getElementById("grandTotal").value = gt ;
+			
+			gt = s.sellingPrice + s.gst - s.discount;
+			document.getElementById("grandTotal").value = gt;
 			grandTotal();
 		}
-		 var gt;
-		 var previousQty=1;
+		var gt;
+		var previousQty = 1;
 		
-		 function amount(e,r,s)
-		{
-		 	var qty = e.target.value;
-					console.log(e);
-			var total = qty * (s.sellingPrice + s.gst -s.discount);
+		function amount(e, r, s) {
+			var qty = e.target.value;
+			
+			var total = qty * (s.sellingPrice + s.gst - s.discount);
 			/* cell6.innerHTML = total; */
-			
-			 e.path[2].cells[6].innerHTML = total;
-		
-			
+
+			e.path[2].cells[6].innerHTML = total;
+
 			grandTotal()
-			 
+
 		}
-		
-		 function grandTotal()
-		 {
-			 var table = document.getElementById("billTable");
+
+		function grandTotal() {
+			var table = document.getElementById("billTable");
+
+			var ths = table.getElementsByTagName('th');
+			var tds = table.getElementsByClassName('count');
+			var qtys = table.getElementsByClassName('qt');
+			var sum = 0;
+			for (var i = 0; i < tds.length; i++) {
+				sum += Number(tds[i].innerText);
 				
-				var ths = table.getElementsByTagName('th');
-				var tds = table.getElementsByClassName('count');
-				console.log(tds.length);
-			 var sum = 0;
-				for(var i=0;i<tds.length;i++){
-				   sum += Number(tds[i].innerText) ;
-				}
+			}
+			 
+			document.getElementById("grandTotal").value = sum;
+
+		}
+
+		function remove(r) {
+			var i = r.parentNode.parentNode.rowIndex;
+			document.getElementById('billTable').deleteRow(i);
+			grandTotal();
+
+		}
+		var qtyList =[];
+		function submission(e){
+			e.preventDefault(); 
 			
-				document.getElementById("grandTotal").value = sum;
+			var table = document.getElementById("billTable");
+			
+			var qtys = table.getElementsByClassName("qt");
+			
+			 for (var i = 0; i < qtys.length; i++) {
+				 qtyList.push(qtys[i].value)
 				
-		 }
-		 
-		 
-		 
-		 function remove(r)
-		 {
-			  var i = r.parentNode.parentNode.rowIndex;
-			  document.getElementById('billTable').deleteRow(i);
-			  grandTotal();
-			  
-		 }
+			} 
+			 console.log(qtyList)
+		}
 	</script>
 </body>
 </html>

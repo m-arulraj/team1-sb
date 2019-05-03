@@ -41,23 +41,17 @@ public class BillerService {
 
 	public void saveBill(Bill theBill, int quantity, Long stockId) {
 
-		ResponseEntity<Bill> response = restTemplate.postForEntity(EndPointConstant.BILLER_SERVICE_URI + "/bill",
+		ResponseEntity<Bill> response = restTemplate.postForEntity(EndPointConstant.BILLER_SERVICE_URI + "bill",
 				theBill, Bill.class);
 
 		if (response != null) {
-
-			/*
-			 * ResponseEntity<Stock> stockresponse = restTemplate.getForEntity(
-			 * EndPointConstant.PRODUCT_SERVICE_URI + "/stock/" + stockId + "/quantity/" +
-			 * quantity, Stock.class);
-			 */
 
 			ResponseEntity<Stock> stockresponse = restTemplate.exchange(
 					EndPointConstant.PRODUCT_SERVICE_URI + "/stock/" + stockId + "/quantity/" + quantity,
 					HttpMethod.PUT, null, Stock.class);
 
-			   Stock stockbody = stockresponse.getBody();
-                System.out.println(stockbody);
+			Stock stockbody = stockresponse.getBody();
+			System.out.println(stockbody);
 		}
 
 	}

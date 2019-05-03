@@ -1,5 +1,7 @@
 package com.virtusa.clientapplication.domain;
 
+import java.util.List;
+
 public class Bill {
 
 	int id;
@@ -12,6 +14,15 @@ public class Bill {
 	float discount;
 	float gst;
 	String manfacturer;
+	List<Long> sId;
+
+	public List<Long> getsId() {
+		return sId;
+	}
+
+	public void setsId(List<Long> sId) {
+		this.sId = sId;
+	}
 
 	public String getManfacturer() {
 		return manfacturer;

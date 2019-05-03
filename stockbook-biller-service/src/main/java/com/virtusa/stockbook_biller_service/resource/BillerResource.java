@@ -22,7 +22,7 @@ public class BillerResource {
 	@Autowired
 	BillerService billerService;
 
-	@PostMapping(value = "/bill")
+	@PostMapping(value = "api/bill")
 	public ResponseEntity<Bill> saveBill(@RequestBody Bill bill) throws URISyntaxException {
 
 		URI uri = new URI("/api/bill/" + billerService.saveBill(bill).getId());
