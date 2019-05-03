@@ -74,60 +74,40 @@ html, body, h1, h2, h3, h4, h5 {
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
 		<div class="w3-row-padding ">
-				<div class="w3-half w3-padding">
-					<input type="text" class="w3-input w3-border" name="productName"
-						list="productName" id="productId"
-						placeholder="Enter Product Name/code">
-					<datalist id="productName">
-						<c:forEach items="${products}" var="product">
-							<option value="${product.getId()}"   id="pId">${product.getName()}</option>
-						</c:forEach>
-					</datalist>
-				</div>
-				<div class="w3-half w3-padding">
-					<button class="w3-button w3-green" onclick="getStockList(event);">GET PRODUCT</button>
-				</div>
-			
+			<div class="w3-half w3-padding">
+				<input type="text" class="w3-input w3-border" name="productName"
+					list="productName" id="productId"
+					placeholder="Enter Product Name/code">
+				<datalist id="productName">
+					<c:forEach items="${products}" var="product">
+						<option value="${product.getId()}" id="pId">${product.getName()}</option>
+					</c:forEach>
+				</datalist>
+			</div>
+			<div class="w3-half w3-padding">
+				<button class="w3-button w3-green" onclick="getProduct(event);">GET
+					PRODUCT</button>
+			</div>
+
 		</div>
 		<br>
-		
 
-		
+
+
 		<div class="w3-container" style="display: none;" id="stockDetails">
 			<h5 class="w3-bar w3-pale-red w3-center ">Stock details</h5>
-			<table class="w3-table-all" >
-				<tr class="w3-black">
-					<th>ID</th>
-					<th>MANUFACTURER</th>
-					<th>QUANTITY</th>
-					<th>SELLING PRICE</th>
-					<th>DISCOUNT</th>
-					<th>GST</th>
-					<th></th>
-				</tr>
-				<%-- <c:forEach items="${stockdetails}" var="stockdetails">
-					<tr>
-						<td><a
-							href="/biller/getstock?stockId=${stockdetails.getId()}">${stockdetails.getId()}</a></td>
-						<td>${stockdetails.getManufacturer()}</td>
-						<td>${stockdetails.getQuantity()}</td>
-						<td>${stockdetails.getSellingPrice()}</td>
-						<td>${stockdetails.getDiscount()}</td>
-						<td>${stockdetails.getGst()}</td>
-						<td><input class="w3-button w3-green" type="button"
-							onclick="addToBill(event)" value="Add"></td>
-					</tr>
-				</c:forEach> --%>
+			<table class="w3-table-all" id="stockTable">
 			</table>
 		</div>
 		<br>
 		<hr class="w3-border">
-		<div class="w3-container">
-			<div>
+		<div class="w3-container w3-border">
+			<form action="/biller/add/bill" method="post">
+			<div >
 
 				<h5 class="w3-bar w3-pale-yellow w3-center">Bill Details</h5>
-				CUSTOMER NAME <input type="text"> &emsp;&emsp; CONTACT
-				NUMBER <input type="tel">
+				CUSTOMER NAME <input type="text" required name="cName"> &emsp;&emsp; CONTACT
+				NUMBER <input type="tel" required name="cContact">
 			</div>
 
 			<br>
@@ -135,27 +115,32 @@ html, body, h1, h2, h3, h4, h5 {
 			<div>
 				<table class="w3-table-all" id="billTable">
 					<tr class="w3-black">
+						<th>&nbsp;</th>
 						<th>Name</th>
 						<th>Quantity</th>
-						<th>Discount</th>
 						<th>Price</th>
+						<th>Discount</th>
+						<th>Gst</th>
+						<th>Total</th>
 					</tr>
 
-					<tr>
-						<td>Product name</td>
-						<td><input type="number" style="width: 60px;" value="1"></td>
-						<td>2%</td>
-						<td>2000</td>
-					</tr>
 				</table>
 			</div>
+			<br><br>
+			<div class="w3-container w3-right w3-navbar">
+				<label class=" w3-row"><b>Grand Total :</b></label>
+				<input id="grandTotal" class="w3-row w3-margin w3-border" value="0" type="text" name="grandTotal">
+			<input type="submit" class="w3-button w3-blue 	" value="Generate Bill">
+			</div>
+			<br>
+			</form>
 		</div>
-
+		<br>
+		<br>
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script>
-	
 		function filterFunction() {
 			var input, filter, ul, li, a, i;
 			input = document.getElementById("myInput");
@@ -172,52 +157,119 @@ html, body, h1, h2, h3, h4, h5 {
 				}
 			}
 		}
+			
 		
-	
-		function getStockList(e)
-		{
+		
+		
+		var stock;
+		var product;
+		function getProduct(e) {
 			var productId = document.getElementById("productId").value;
 			document.getElementById("stockDetails").style.display = "block";
-			
+
 			var xhttp = new XMLHttpRequest();
-		    xhttp.onreadystatechange = function() {
-		         if (this.readyState == 4 && this.status == 200) {
-		             var stock=JSON.parse(this.response);
-		             console.log(stock);
-		             setStock(stock);
-		         }
-		    };
-		    xhttp.open("GET", "/biller/stockBill?productId="+productId, true);
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					 product = JSON.parse(this.response);
+					
+					setStock(product.stockList);
+				}
+			};
+			xhttp.open("GET", "/product?productId=" + productId, true);
 			xhttp.send();
 		}
 		
-		
-		function setStock(stock)
-		{
-			var stockDetails = document.getElementById("stockDetails");
+		function setStock(stock) {
+			var stockDetails = document.getElementById("stockTable");
+			stockDetails.innerHTML = "";
+			stockDetails.innerHTML = "<table class='w3-table-all'  >"
+					+ "<tr class='w3-black'>" + "<th>ID</th>"
+					+ "<th>MANUFACTURER</th>" + "<th>QUANTITY</th>"
+					+ "<th>SELLING PRICE</th>" + "<th>DISCOUNT</th>"
+					+ "<th>GST</th>" + "<th>Action</th>" + "</tr>";
+
 			console.log(stock.length)
-			stock.forEach(function(s){
-				stockDetails.innerHTML+="<tr>"+
-				
-				"<td>"+s.manufacturer+"</td>"+
-				"<td>"+s.quantity+"</td>"+
-				"<td>"+s.sellingPrice+"</td>"+
-				"<td>"+s.discount+"</td>"+
-				"<td>"+s.gst+"</td>"+
-				"</tr>"	
+			stock.forEach(function(s) {
+				stockDetails.innerHTML += "<tr>" +
+				"<td>" + s.id +
+				"<td>" + s.manufacturer + "</td>" + "<td>" + s.quantity
+						+ "</td>" + "<td>" + s.sellingPrice + "</td>" + "<td>"
+						+ s.discount + "</td>" + "<td>" + s.gst + "</td>"
+						+"<td><input type='button' value='Add' class='w3-button w3-green'"+
+						
+						"onclick='addToBill("+JSON.stringify(s)+")'></td>"+ 
+						"</tr>"
 			})
-			}
-		
-		
+			
+		}
+
+		var cell6;
 		//need to work
-		function addToBill() {
+		function addToBill(s) {
 			var table = document.getElementById("billTable");
 			var row = table.insertRow();
+			var cell0 = row.insertCell();
 			var cell1 = row.insertCell();
 			var cell2 = row.insertCell();
-			cell1.innerHTML = "NEW CELL1";
-			cell2.innerHTML = "NEW CELL2";
+			var cell3 = row.insertCell();
+			var cell4 = row.insertCell();
+			var cell5 = row.insertCell();
+			cell6 = row.insertCell();
+			cell0.innerHTML = "<input type='button' class='w3-button ' value='&#10060;'onclick='remove(this)'>";
+			cell1.innerHTML = "<td>"+product.name+"</td>";
+			cell2.innerHTML = "<input type='number' value='1' style='width:60;' min='1' onchange='amount(event,this,"+JSON.stringify(s)+")'>";
+			
+			cell3.innerHTML = "<td>"+s.sellingPrice+"</td>";
+			cell4.innerHTML =  "<td>"+s.discount+"</td>";
+			cell5.innerHTML =  "<td>"+s.gst+"</td>";
+			cell6.innerHTML =  "<td>"+(s.sellingPrice + s.gst -s.discount)+"</td>";
+			cell6.classList.add("count");
+			gt = s.sellingPrice + s.gst -s.discount;
+			document.getElementById("grandTotal").value = gt ;
+			grandTotal();
 		}
+		 var gt;
+		 var previousQty=1;
+		
+		 function amount(e,r,s)
+		{
+		 	var qty = e.target.value;
+					console.log(e);
+			var total = qty * (s.sellingPrice + s.gst -s.discount);
+			/* cell6.innerHTML = total; */
+			
+			 e.path[2].cells[6].innerHTML = total;
+		
+			
+			grandTotal()
+			 
+		}
+		
+		 function grandTotal()
+		 {
+			 var table = document.getElementById("billTable");
+				
+				var ths = table.getElementsByTagName('th');
+				var tds = table.getElementsByClassName('count');
+				console.log(tds.length);
+			 var sum = 0;
+				for(var i=0;i<tds.length;i++){
+				   sum += Number(tds[i].innerText) ;
+				}
+			
+				document.getElementById("grandTotal").value = sum;
+				
+		 }
+		 
+		 
+		 
+		 function remove(r)
+		 {
+			  var i = r.parentNode.parentNode.rowIndex;
+			  document.getElementById('billTable').deleteRow(i);
+			  grandTotal();
+			  
+		 }
 	</script>
 </body>
 </html>

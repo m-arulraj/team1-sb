@@ -63,5 +63,13 @@ public class ClientService {
 		return responses.getBody();
 	}
 
+	public Product getProductById(Long productId)
+	{
+		ResponseEntity<Product> response = restTemplate.exchange(
+				EndPointConstant.PRODUCT_SERVICE_URI + "product/"+productId, HttpMethod.GET, null,
+				new ParameterizedTypeReference<Product>() {
+				});
+		return response.getBody();
+	}
 
 }
