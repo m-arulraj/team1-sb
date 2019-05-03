@@ -9,64 +9,76 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+/**
+ * @author kumarpavan
+ *
+ */
 @Entity
-@Table(name="bill")
+@Table(name = "bill")
 public class Bill {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	int id;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	String name;
-	@Column(name="contact")
-	int contact;
-	@Column(name="biller_name")
+	@Column(name = "contact")
+	long contact;
+	@Column(name = "biller_name")
 	String billerName;
-	@Column(name="grand_total")
+	@Column(name = "grand_total")
 	double grandTotal;
-	@Column(name="bill_date")
+	@Column(name = "bill_date")
 	String billDate;
+
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	public int getContact() {
+
+	public long getContact() {
 		return contact;
 	}
-	public void setContact(int contact) {
+
+	public void setContact(long contact) {
 		this.contact = contact;
 	}
+
 	public String getBillerName() {
 		return billerName;
 	}
+
 	public void setBillerName(String billerName) {
 		this.billerName = billerName;
 	}
+
 	public double getGrandTotal() {
 		return grandTotal;
 	}
+
 	public void setGrandTotal(double grandTotal) {
 		this.grandTotal = grandTotal;
 	}
+
 	public String getBillDate() {
 		return billDate;
 	}
+
 	public void setBillDate(String billDate) {
 		this.billDate = billDate;
-	} 
-	
-	
-	
+	}
+
 }

@@ -65,14 +65,15 @@ public class BillerController {
 
 		Bill theBill = new Bill();
 		theBill.setName(bill.getName());
-
 		theBill.setContact(bill.getContact());
 		theBill.setBillerName(principal.getName());
-
 		theBill.setGrandTotal(bill.getGrandTotal());
 		theBill.setBillDate(LocalDate.now().toString());
-		System.out.println(theBill.getBillDate());
-	//	billerService.saveBill(theBill, bill.getQuantity(), );
+		
+		List<Long> stockids = bill.getStockIds();
+		List<Integer> quantity = bill.getQtyList();
+		
+		billerService.saveBill(theBill ,stockids,quantity );
 
 		return new ModelAndView("success");
 

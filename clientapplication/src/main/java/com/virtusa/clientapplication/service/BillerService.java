@@ -39,19 +39,22 @@ public class BillerService {
 		return response.getBody();
 	}
 
-	public void saveBill(Bill theBill, int quantity, Long stockId) {
+	public void saveBill(Bill theBill, List<Long> stockids, List<Integer> quantity) {
 
 		ResponseEntity<Bill> response = restTemplate.postForEntity(EndPointConstant.BILLER_SERVICE_URI + "bill",
 				theBill, Bill.class);
 
 		if (response != null) {
 
-			ResponseEntity<Stock> stockresponse = restTemplate.exchange(
-					EndPointConstant.PRODUCT_SERVICE_URI + "/stock/" + stockId + "/quantity/" + quantity,
-					HttpMethod.PUT, null, Stock.class);
+			for (int i = 0; i < stockids.size(); i++) {
+				System.out.println("id :-"+stockids.get(i)+" quantity "+quantity.get(i));
+				ResponseEntity<Stock> stockresponse = restTemplate.exchange(
+						EndPointConstant.PRODUCT_SERVICE_URI + "/stock/" + stockids.get(i) + "/quantity/" + quantity.get(i),
+						HttpMethod.PUT, null, Stock.class);
 
-			Stock stockbody = stockresponse.getBody();
-			System.out.println(stockbody);
+				Stock stockbody = stockresponse.getBody();
+				System.out.println(stockbody);
+			}
 		}
 
 	}

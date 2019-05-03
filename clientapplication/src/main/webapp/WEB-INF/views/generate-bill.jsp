@@ -75,7 +75,7 @@ html, body, h1, h2, h3, h4, h5 {
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
 		<div class="w3-row-padding ">
 			<div class="w3-half w3-padding">
-				<input type="text" class="w3-input w3-border" name="productName"
+				<input type="text" class="w3-input w3-border" required="required" onclick="clearSearch(event)" name="productName"
 					list="productName" id="productId"
 					placeholder="Enter Product Name/code">
 				<datalist id="productName">
@@ -102,7 +102,7 @@ html, body, h1, h2, h3, h4, h5 {
 		<br>
 		<hr class="w3-border">
 		<div class="w3-container w3-border">
-			<form:form action="/biller/add/bill" method="post" onsubmit="submission(event)"
+			<form:form action="/biller/add/bill" method="post" 
 				modelAttribute="billdata">
 
 
@@ -111,9 +111,9 @@ html, body, h1, h2, h3, h4, h5 {
 
 					<h5 class="w3-bar w3-pale-yellow w3-center">Bill Details</h5>
 					CUSTOMER NAME
-					<form:input type="text" required="" name="cName" path="name"></form:input>
+					<form:input required="required" type="text"  name="cName" path="name"></form:input>
 					&emsp;&emsp; CONTACT NUMBER
-					<form:input type="tel" required="" name="cContact" path="contact"></form:input>
+					<form:input required="required" type="text" pattern="[0-9]{10}" name="cContact" path="contact"></form:input>
 				</div>
 
 				<br>
@@ -128,6 +128,7 @@ html, body, h1, h2, h3, h4, h5 {
 							<th>Discount</th>
 							<th>Gst</th>
 							<th>Total</th>
+							<th></th>
 						</tr>
 
 					</table>
@@ -136,7 +137,7 @@ html, body, h1, h2, h3, h4, h5 {
 				<br>
 				<div class="w3-container w3-right w3-navbar">
 					<label class=" w3-row"><b>Grand Total :</b></label>
-					<form:input id="grandTotal" class="w3-row w3-margin w3-border"
+					<form:input required="required" id="grandTotal" class="w3-row w3-margin w3-border"
 						value="0" type="text" name="grandTotal" path="grandTotal"></form:input>
 					<input type="submit" class="w3-button w3-blue"
 						value="Generate Bill "/>
@@ -152,6 +153,12 @@ html, body, h1, h2, h3, h4, h5 {
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script>
+	
+		function clearSearch(e)
+		{
+			document.getElementById('productId').value = "";
+		}
+	
 		function filterFunction() {
 			var input, filter, ul, li, a, i;
 			input = document.getElementById("myInput");
@@ -197,8 +204,11 @@ html, body, h1, h2, h3, h4, h5 {
 					+ "<th>GST</th>" + "<th>Action</th>" + " </tr>";
 
 			stock
-					.forEach(function(s) {
-						stockDetails.innerHTML += "<tr>"
+					.forEach(function(s) 	
+					{
+						if(s.quantity!=0)
+							{
+							stockDetails.innerHTML += "<tr>"
 								+ "<td>"
 								+ s.id
 								+ "<td>"
@@ -217,9 +227,10 @@ html, body, h1, h2, h3, h4, h5 {
 								+ s.gst
 								+ "</td>"
 								+ "<td><input type='button' value='Add' class='w3-button w3-green'"+
-								"onclick='addToBill(" + JSON.stringify(s)+")'></td>" +
-								+"</tr>"
-					})
+								"onclick='addToBill(" + JSON.stringify(s)+")'></td> </tr>"
+							}
+					}
+					)
 
 		}
 
@@ -235,10 +246,10 @@ html, body, h1, h2, h3, h4, h5 {
 			var cell4 = row.insertCell();
 			var cell5 = row.insertCell();
 			cell6 = row.insertCell();
-			
+			var cell7 = row.insertCell();
 			cell0.innerHTML = "<input type='button' class='w3-button ' value='&#10060;'onclick='remove(this)'>";
 			cell1.innerHTML = "<td>" + product.name + "</td>";
-			cell2.innerHTML = "<input type='number' class='qt' value='1' style='width:60;' min='1' name='quantity' path='quantity' onchange='amount(event,this,"
+			cell2.innerHTML = "<input type='number' class='qt' value='1' style='width:60;' min='1' name='qtyList' path='qtyList' onchange='amount(event,this,"
 					+ JSON.stringify(s) + ")'>";
 			
 			/* cell2.classList.add("qt"); */
@@ -250,7 +261,7 @@ html, body, h1, h2, h3, h4, h5 {
 					+ "</td>";
 					
 			cell6.classList.add("count");
-			
+			cell7.innerHTML = "<input type='hidden' name='stockIds' value='"+s.id+"' path='stockIds' class='sIds'>";
 			gt = s.sellingPrice + s.gst - s.discount;
 			document.getElementById("grandTotal").value = gt;
 			grandTotal();
@@ -293,19 +304,22 @@ html, body, h1, h2, h3, h4, h5 {
 
 		}
 		var qtyList =[];
-		function submission(e){
+		var stockIds =[];
+		/* function submission(e){
 			e.preventDefault(); 
 			
 			var table = document.getElementById("billTable");
-			
+			var sIds = table.getElementsByClassName("sIds");
 			var qtys = table.getElementsByClassName("qt");
 			
 			 for (var i = 0; i < qtys.length; i++) {
-				 qtyList.push(qtys[i].value)
-				
+				 qtyList.push(qtys[i].value);
+				 stockIds.push(sIds[i].value);
 			} 
 			 console.log(qtyList)
-		}
+			 console.log(stockIds)
+			
+		} */
 	</script>
 </body>
 </html>
