@@ -57,7 +57,7 @@ html, body, h1, h2, h3, h4, h5 {
 				class="w3-bar-item w3-button w3-padding "><i
 				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Product</a> <!-- <a href="/biller"
 				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Biller</a> --> <a href="/viewstock"
+				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Biller</a> --> <a href="viewstockmanager"
 				class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-eye fa-fw"></i>&nbsp; View Stock</a><!--  <a href="#"
 				class="w3-bar-item w3-button w3-padding"><i
@@ -98,11 +98,22 @@ html, body, h1, h2, h3, h4, h5 {
 					<h4>Add Product</h4>
 				</div>
 			</div>
+			<div class="w3-quarter">
+				<div class="w3-container w3-brown w3-padding-16">
+					<a href="/addstockforexistingproduct"
+					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
+					<!--  <div class="w3-right">
+          <h3>52</h3>
+        </div> -->
+					<div class="w3-clear"></div>
+					<h4>Add Stock</h4>
+				</div>
+			</div>
 			
 			<div class="w3-quarter">
 				<div class="w3-container w3-teal w3-padding-16">
 					<div class="w3-left">
-						<a href="/viewstock"
+						<a href="viewstockmanager"
 					class="w3-bar-item w3-button"><i class="fa fa-eye" style="font-size: 48px; color: black"></i></a>
 					</div>
 					<!-- <div class="w3-right">

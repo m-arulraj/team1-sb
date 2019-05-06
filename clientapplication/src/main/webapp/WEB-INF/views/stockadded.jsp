@@ -8,5 +8,7 @@
 </head>
 <body>
 <h1>STOCK ADDED SUCCESSFULLY</h1>
-</body>
+<a href="/manger">HOME</a>
+ <a href="/addstock">BACK</a>
+ </body>
 </html>

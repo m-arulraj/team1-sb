@@ -61,10 +61,10 @@ public class ClientResource {
 		return null;
 	}
 
-	@RequestMapping(value = "/viewstock", method = RequestMethod.GET)
+	@RequestMapping(value = "/viewstockmanager", method = RequestMethod.GET)
 	public ModelAndView viewStock() {
 
-		ModelAndView mav = new ModelAndView("viewstock");
+		ModelAndView mav = new ModelAndView("viewstockmanager");
 
 		List<Product> products = clientService.getAllProducts();
 		mav.addObject("productlist", products);
@@ -118,23 +118,35 @@ public class ClientResource {
 		return mav;
 	}
 
-	@RequestMapping(value = "/addstocktotable")
-	public String addStockToTable(@ModelAttribute("stockdetails") Stock stock, HttpSession session) {
+	@RequestMapping(value = "/addstockforexistingtotable")
+	public String addStockToTableForExisting(@ModelAttribute("stockdetails") Stock stock, HttpSession session) {
 
-		Product product = (Product) session.getAttribute("productid");
+		/* Product product = (Product) session.getAttribute("productid"); */
 
-		stock.setProductId(product.getId());
+		stock.setOriginalQuantity(stock.getQuantity());
 
 		clientService.saveStock(stock);
 
 		return "stockadded";
 	}
 
-	@RequestMapping(value = "/viewstockdetails", method = RequestMethod.GET)
+	@RequestMapping(value = "/addstocktotable")
+	public String addStockToTable(@ModelAttribute("stockdetails") Stock stock, HttpSession session) {
+
+		 Product product = (Product) session.getAttribute("productid"); 
+           stock.setProductId(product.getId());
+		stock.setOriginalQuantity(stock.getQuantity());
+
+		clientService.saveStock(stock);
+
+		return "stockadded";
+	}
+	@RequestMapping(value = "/viewstockdetailsmanager", method = RequestMethod.GET)
 	public ModelAndView viewStockDetails(@RequestParam("productId") Long id) {
 
-		ModelAndView mav = new ModelAndView("stockdetails");
+		ModelAndView mav = new ModelAndView("stockdetailsmanager");
 		List<Stock> stock = clientService.getStockList(id);
+		
 		// stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList());
 		mav.addObject("stockdetails",
 				stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList()));
@@ -152,5 +164,14 @@ public class ClientResource {
 	public String error() {
 		
 		return "errorpage2";
+	}
+	
+	@RequestMapping(value="/addstockforexistingproduct")
+	public ModelAndView addstock() {
+		List<Product> products = clientService.getAllProducts();
+		ModelAndView mav=new ModelAndView("addingstock");
+		mav.addObject("productlist",products);
+		mav.addObject("stockdetails",new Stock());
+		return mav;
 	}
 }

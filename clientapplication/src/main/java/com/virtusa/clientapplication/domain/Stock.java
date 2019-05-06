@@ -32,7 +32,9 @@ public class Stock {
 	private Long threshold;
 
 	private Long productId;
-
+    
+	private Long originalQuantity;
+	
 	public Stock() {
 
 	}
@@ -140,4 +142,13 @@ public class Stock {
 		this.productId = productService;
 	}
 
+	public Long getOriginalQuantity() {
+		return originalQuantity;
+	}
+
+	public void setOriginalQuantity(Long originalQuantity) {
+		this.originalQuantity = originalQuantity;
+	}
+
+	
 }

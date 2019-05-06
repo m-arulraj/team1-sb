@@ -11,13 +11,7 @@ import javax.persistence.Table;
 @Table(name = "stock_details")
 public class Stock {
 
-	@Override
-	public String toString() {
-		return "Stock [id=" + id + ", date=" + date + ", quantity=" + quantity + ", manufacturer=" + manufacturer
-				+ ", costPrice=" + costPrice + ", sellingPrice=" + sellingPrice + ", discount=" + discount
-				+ ", totalCp=" + totalCp + ", gst=" + gst + ", threshold=" + threshold + ", productId=" + productId
-				+ "]";
-	}
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +23,11 @@ public class Stock {
 
 	@Column(name = "quantity")
 	private Long quantity;
+	
+	@Column(name = "originalquantity")
+	private Long originalQuantity;
+
+	
 
 	@Column(name = "manufacturer")
 	private String manufacturer;
@@ -99,6 +98,16 @@ public class Stock {
 
 	public String getManufacturer() {
 		return manufacturer;
+	}
+	
+
+
+	public Long getOriginalQuantity() {
+		return originalQuantity;
+	}
+
+	public void setOriginalQuantity(Long originalQuantity) {
+		this.originalQuantity = originalQuantity;
 	}
 
 	public void setManufacturer(String manufacturer) {

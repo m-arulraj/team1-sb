@@ -1,6 +1,8 @@
 package com.virtusa.clientapplication.resource;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,14 +12,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.virtusa.clientapplication.domain.Product;
+import com.virtusa.clientapplication.domain.Stock;
 import com.virtusa.clientapplication.domain.User;
 import com.virtusa.clientapplication.service.AdminService;
+import com.virtusa.clientapplication.service.ClientService;
 
 @Controller
 public class AdminController {
 
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	ClientService clientService;
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
 	public String addUser(@ModelAttribute("user") User user) {
@@ -52,6 +60,27 @@ public class AdminController {
 	public ModelAndView fastMovingItem() {
 		ModelAndView mav = new ModelAndView("fastmoving");
 		return mav;
+	}
+	
+	@RequestMapping(value = "/viewstock", method = RequestMethod.GET)
+	public ModelAndView viewStock() {
+
+		ModelAndView mav = new ModelAndView("viewstock");
+
+		List<Product> products = clientService.getAllProducts();
+		mav.addObject("productlist", products);
+		return mav;
+	}
+	@RequestMapping(value = "/viewstockdetails", method = RequestMethod.GET)
+	public ModelAndView viewStockDetails(@RequestParam("productId") Long id) {
+
+		ModelAndView mav = new ModelAndView("stockdetails");
+		List<Stock> stock = clientService.getStockList(id);
+		// stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList());
+		mav.addObject("stockdetails",
+				stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList()));
+		return mav;
+
 	}
 
 }
