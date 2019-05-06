@@ -1,17 +1,40 @@
 package com.virtusa.clientapplication.domain;
 
+import java.util.List;
+
 public class Bill {
 
 	int id;
 	String name;
-	int contact;
+	long contact;
 	String billerName;
 	double grandTotal;
 	String billDate;
-	int quantity;
 	float discount;
 	float gst;
 	String manfacturer;
+	List<Long> stockIds;
+	List<Integer> qtyList;
+
+	public List<Integer> getQtyList() {
+		return qtyList;
+	}
+
+	public void setQtyList(List<Integer> qtyList) {
+		this.qtyList = qtyList;
+	}
+
+	public List<Long> getStockIds() {
+		return stockIds;
+	}
+
+	public List<Long> getsId() {
+		return stockIds;
+	}
+
+	public void setStockIds(List<Long> sId) {
+		this.stockIds = sId;
+	}
 
 	public String getManfacturer() {
 		return manfacturer;
@@ -43,9 +66,6 @@ public class Bill {
 
 	float sellingprice;
 
-	public int getQuantity() {
-		return quantity;
-	}
 
 	public float getSellingprice() {
 		return sellingprice;
@@ -55,9 +75,6 @@ public class Bill {
 		this.sellingprice = sellingprice;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
 
 	public int getId() {
 		return id;
@@ -75,11 +92,11 @@ public class Bill {
 		this.name = name;
 	}
 
-	public int getContact() {
+	public long getContact() {
 		return contact;
 	}
 
-	public void setContact(int contact) {
+	public void setContact(long contact) {
 		this.contact = contact;
 	}
 
