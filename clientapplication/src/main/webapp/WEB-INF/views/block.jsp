@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>BLOCK USER</title>
 
 <style type="text/css">
 body{
@@ -40,7 +40,7 @@ div {
 			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; <input type="submit"
 				value="BLOCK" /> &emsp;&emsp;&emsp;
 
-                <h3><a href="/admin">HOME</a></h3>
+                <h3><a href="/admin">BACK</a></h3>
 		</form>
 		</div>
 </body>

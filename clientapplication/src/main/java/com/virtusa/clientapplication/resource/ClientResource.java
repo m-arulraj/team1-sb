@@ -174,4 +174,37 @@ public class ClientResource {
 		mav.addObject("stockdetails",new Stock());
 		return mav;
 	}
+	
+	@RequestMapping(value="/manageproduct")
+	public String manageProduct() {
+		return "manageproduct";
+	}
+	@RequestMapping(value="/updateproduct")
+	public ModelAndView updateProduct() {
+		ModelAndView mav=new ModelAndView("updateproduct");
+		List<Product> products = clientService.getAllProducts();
+		mav.addObject("productlist", products);
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="/deleteproduct")
+	public ModelAndView deleteProduct() {
+    
+		ModelAndView mav=new ModelAndView("deleteproduct");
+		List<Product> products = clientService.getAllProducts();
+		mav.addObject("productlist", products);
+		return mav;
+	}
+	
+	@RequestMapping(value="/delete")
+	public ModelAndView delete(@RequestParam("productId") Long productId) {
+             clientService.deleteProductById(productId);
+		ModelAndView mav=new ModelAndView("deleteproduct");
+		mav.addObject("generated", true);
+		return mav ;
+	}
+	
+	
+	
 }

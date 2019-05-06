@@ -15,13 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.virtusa.clientapplication.service.CanvasjsChartService;
 
 @Controller
-@RequestMapping(value = "/canvasjschart")
+@RequestMapping(value = "/p")
 public class ChartResource {
 
 	@Autowired
 	private CanvasjsChartService canvasjsChartService;
 
-	@RequestMapping(value = "/chartdata", method = RequestMethod.GET)
+	@RequestMapping(value = "/status", method = RequestMethod.GET)
 	public ModelAndView springMVC(ModelMap modelMap) {
 
 		List<Double> canvasjsDataList = canvasjsChartService.getProfit();

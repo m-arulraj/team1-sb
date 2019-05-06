@@ -23,14 +23,23 @@ public class AdminController {
 
 	@Autowired
 	AdminService adminService;
-	
+
 	@Autowired
 	ClientService clientService;
 
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute("user") User user) {
-		adminService.saveUser(user);
-		return null;
+	public ModelAndView addUser(@ModelAttribute("user") User user) {
+		User savedUser = adminService.saveUser(user);
+	
+		if (savedUser.getAuthorities().getRole().equals("ROLE_MANAGER")) {
+			ModelAndView mav = new ModelAndView("registermanager");
+			mav.addObject("generated", true);
+			return mav;
+		} else {
+			ModelAndView mav = new ModelAndView("registerBiller");
+			mav.addObject("generated", true);
+			return mav;
+		}
 
 	}
 
@@ -61,7 +70,7 @@ public class AdminController {
 		ModelAndView mav = new ModelAndView("fastmoving");
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/viewstock", method = RequestMethod.GET)
 	public ModelAndView viewStock() {
 
@@ -71,6 +80,7 @@ public class AdminController {
 		mav.addObject("productlist", products);
 		return mav;
 	}
+
 	@RequestMapping(value = "/viewstockdetails", method = RequestMethod.GET)
 	public ModelAndView viewStockDetails(@RequestParam("productId") Long id) {
 

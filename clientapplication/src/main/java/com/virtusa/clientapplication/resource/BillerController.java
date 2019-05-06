@@ -69,13 +69,15 @@ public class BillerController {
 		theBill.setBillerName(principal.getName());
 		theBill.setGrandTotal(bill.getGrandTotal());
 		theBill.setBillDate(LocalDate.now().toString());
-		
+
 		List<Long> stockids = bill.getStockIds();
 		List<Integer> quantity = bill.getQtyList();
-		
-		billerService.saveBill(theBill ,stockids,quantity );
 
-		return new ModelAndView("success");
+		billerService.saveBill(theBill, stockids, quantity);
+
+		ModelAndView mav = new ModelAndView("generate-bill");
+		mav.addObject("generated", true);
+		return mav;
 
 	}
 

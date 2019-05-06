@@ -87,13 +87,13 @@ public class UserAuthenticationProvider implements AuthenticationProvider, Authe
 		Collection<? extends GrantedAuthority> authoritires = authentication.getAuthorities();
 
 		for (GrantedAuthority grantedAuthority : authoritires) {
-			if (grantedAuthority.getAuthority().equals("ADMIN")) {
+			if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
 				hasAdminRole = true;
 				break;
 			} else if (grantedAuthority.getAuthority().equals("ROLE_BILLER")) {
 				hasBillerRole = true;
 				break;
-			} else if (grantedAuthority.getAuthority().equals("MANAGER")) {
+			} else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
 				hasManagerRole = true;
 				break;
 			}

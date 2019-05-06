@@ -117,7 +117,7 @@ html, body, h1, h2, h3, h4, h5 {
 			<div class="w3-quarter">
 				<div class="w3-container w3-brown w3-text-white w3-padding-16">
 					<div class="w3-left">
-						<a href="/canvasjschart/chartdata" class="w3-bar-item w3-button"> <i
+						<a href="/p/status" class="w3-bar-item w3-button"> <i
 							class="fa fa-bar-chart w3-xxxlarge"></i></a>
 					</div>
 					<div class="w3-right"></div>

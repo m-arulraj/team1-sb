@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div align="center">
 <h3>User Blocked Successfully</h3>
-<a href="/">Click Here</a>
+<a href="/admin">HOME</a>
+</div>
 </body>
 </html>

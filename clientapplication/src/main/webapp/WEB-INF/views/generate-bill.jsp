@@ -4,9 +4,13 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
+<head>
 <title>Generate Bill</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Raleway">
@@ -48,6 +52,10 @@
 	text-decoration: none;
 	display: block;
 }
+.modal-content{
+ background-color: floralwhite
+}
+
 
 .dropdown a:hover {
 	background-color: #ddd;
@@ -65,6 +73,8 @@ html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
 }
 </style>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
 <body class="w3-light-grey">
 	<%@include file="biller-fragments/util.jsp"%>
 	<%@include file="biller-fragments/biller-header.jsp"%>
@@ -150,10 +160,31 @@ html, body, h1, h2, h3, h4, h5 {
 		</div>
 		<br> <br>
 	</div>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<c:if test="${generated}">
+	  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Bill Status</h4>
+        </div>
+        <div class="modal-body">
+          <p>Your Bill Is Genrated</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+          <a type="button" class="btn btn-info" href="/biller" >Home</a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+	</c:if>
+
 	<script>
-	
 		function clearSearch(e)
 		{
 			document.getElementById('productId').value = "";
@@ -175,7 +206,10 @@ html, body, h1, h2, h3, h4, h5 {
 				}
 			}
 		}
-
+		$(document).ready(function(){
+			  // Show the Modal on load
+			  $("#myModal").modal("show");
+		});
 		var stock;
 		var product;
 		function getProduct(e) {
@@ -305,6 +339,7 @@ html, body, h1, h2, h3, h4, h5 {
 		}
 		var qtyList =[];
 		var stockIds =[];
+	
 		/* function submission(e){
 			e.preventDefault(); 
 			
@@ -320,6 +355,8 @@ html, body, h1, h2, h3, h4, h5 {
 			 console.log(stockIds)
 			
 		} */
-	</script>
-</body>
-</html>
+		
+		
+		</script>
+		</body>
+		</html>

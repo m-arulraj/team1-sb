@@ -45,7 +45,7 @@ public class AdminServiceTest {
 		user.setPassword("Mahesh@987");
 		user.setName("Mahesh P");
 		user.setEmail("mahesh123@gmail.com");
-		user.setContact(123456987);
+		user.setContact(123456987l);
 		user.setEnabled(1);
 		user.setAuthorities(authorities);
 

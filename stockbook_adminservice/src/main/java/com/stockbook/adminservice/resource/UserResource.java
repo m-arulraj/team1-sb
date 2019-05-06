@@ -1,5 +1,7 @@
 package com.stockbook.adminservice.resource;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -31,13 +33,12 @@ public class UserResource {
 	AuthoritiesService authoritiesService;
 
 	@RequestMapping(value = "/user/", method = RequestMethod.POST)
-	public ResponseEntity<String> createUser(@RequestBody User user, UriComponentsBuilder Builder) {
+	public ResponseEntity<User> createUser(@RequestBody User user, UriComponentsBuilder Builder) throws URISyntaxException {
 
-		userService.saveUser(user);
+		User saveduser=userService.saveUser(user);
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(Builder.path("/api/user/{id}").buildAndExpand(user.getId()).toUri());
-		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+
+		return ResponseEntity.created(new URI("/api/user/" + saveduser.getId())).body(saveduser);
 
 	}
 

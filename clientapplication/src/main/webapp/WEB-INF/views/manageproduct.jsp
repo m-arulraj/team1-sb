@@ -25,7 +25,7 @@ html, body, h1, h2, h3, h4, h5 {
 			onclick="w3_open();">
 			<i class="fa fa-bars"></i> &nbsp;Menu
 		</button>
-		<span class="w3-bar-item w3-right">WELCOME TO STOCK BOOK</span>
+		<span class="w3-bar-item w3-right">Welocome To Stock Book</span>
 		<span class="w3-bar-item w3-center"> MANAGER PAGE</span>
 	</div>
 
@@ -55,7 +55,7 @@ html, body, h1, h2, h3, h4, h5 {
 				onclick="w3_close()" title="close menu"><i
 				class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> --> <a href="/manageproduct"
 				class="w3-bar-item w3-button w3-padding "><i
-				class="fa fa-user-plus fa-fw"></i>&nbsp; MANAGE PRODUCT</a> <!-- <a href="/biller"
+				class="fa fa-user-plus fa-fw"></i>&nbsp; Manage Product</a> <!-- <a href="/biller"
 				class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Biller</a> --> <a href="viewstockmanager"
 				class="w3-bar-item w3-button w3-padding"><i
@@ -89,68 +89,43 @@ html, body, h1, h2, h3, h4, h5 {
 		<div class="w3-row-padding w3-margin-bottom">
 			<div class="w3-quarter">
 				<div class="w3-container w3-red w3-padding-16">
-					<a href="/manageproduct"
+					<a href="/addproduct"
 					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
 					<!--  <div class="w3-right">
           <h3>52</h3>
         </div> -->
 					<div class="w3-clear"></div>
-					<h4>MANAGE PRODUCTS</h4>
+					<h4>ADD PRODUCT</h4>
 				</div>
 			</div>
 			<div class="w3-quarter">
 				<div class="w3-container w3-brown w3-padding-16">
-					<a href="/addstockforexistingproduct"
-					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
+					<a href="/updateproduct"
+					class="w3-bar-item w3-button"><i class="fa fa-refresh fa-spin" style="font-size: 48px; color: black"></i></a>
 					<!--  <div class="w3-right">
           <h3>52</h3>
         </div> -->
 					<div class="w3-clear"></div>
-					<h4>ADD STOCK</h4>
+					<h4>UPDATE PRODUCT</h4>
 				</div>
 			</div>
 			
 			<div class="w3-quarter">
 				<div class="w3-container w3-teal w3-padding-16">
 					<div class="w3-left">
-						<a href="viewstockmanager"
-					class="w3-bar-item w3-button"><i class="fa fa-eye" style="font-size: 48px; color: black"></i></a>
+						<a href="/deleteproduct"
+					class="w3-bar-item w3-button"><i class="fa fa-trash" style="font-size: 48px; color: black"></i></a>
 					</div>
 					<!-- <div class="w3-right">
 						<h3>23</h3>
 					</div> -->
 					<div class="w3-clear"></div>
-					<h4>View Stock</h4>
+					<h4>DELETE PRODUCT</h4>
 				</div>
 			</div>
 			
 
-		<div class="w3-panel">
-			<div class="w3-row-padding" style="margin: 0 -16px">
-				
-				</div>
-			</div>
-		</div> 
-		<hr>
-		<div class="w3-container">
-			<h5>Product Quantity Available</h5>
-			<h3><a href="/fastmoving">Fast Moving Item</a></h3>
-			
-			
-			<div class="w3-grey">
-			
-				<div class="w3-container w3-center w3-padding w3-red"
-					style="width: 25%"> 20</div>
-			</div>
-
-			
-
-			<h3><a href="/">Slow Moving  Item</a></h3>
-			<div class="w3-grey">
-				<div class="w3-container w3-center w3-padding w3-green"
-					style="width: 75%">75</div>
-			</div>
-		</div>
+		
 		<!-- <hr>
 
 		<div class="w3-container">
@@ -268,6 +243,7 @@ html, body, h1, h2, h3, h4, h5 {
 		
 		<!-- End page content -->
 	</div>
+
 
 	<script>
 		// Get the Sidebar

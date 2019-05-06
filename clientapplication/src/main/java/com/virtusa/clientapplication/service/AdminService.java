@@ -21,9 +21,10 @@ public class AdminService {
 
 	
 
-	public void saveUser(User user) {
+	public User saveUser(User user) {
 
-		restTemplate.postForEntity(EndPointConstant.ADMIN_SERVICE_URI+"user/", user, String.class);
+		ResponseEntity<User> response = restTemplate.postForEntity(EndPointConstant.ADMIN_SERVICE_URI+"user/", user, User.class);
+		return response.getBody();
 
 	}
 

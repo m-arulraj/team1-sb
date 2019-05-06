@@ -72,4 +72,13 @@ public class ClientService {
 		return response.getBody();
 	}
 
+	public void deleteProductById(Long productId) {
+		
+		ResponseEntity<Product> response = restTemplate.exchange(
+				EndPointConstant.PRODUCT_SERVICE_URI + "product/"+productId, HttpMethod.DELETE, null,
+				new ParameterizedTypeReference<Product>() {
+				});
+		
+	}
+
 }

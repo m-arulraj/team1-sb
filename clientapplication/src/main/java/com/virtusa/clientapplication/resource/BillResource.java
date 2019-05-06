@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,5 +33,11 @@ public class BillResource {
 	 public Product getProduct(@RequestParam("productId")Long id)
 	 {
 		 return clientService. getProductById(id);
+	 }
+	 
+	 @PutMapping(value="/api/product")
+	 public ResponseEntity<String> updateProduct(){
+		 
+		 return ResponseEntity.ok("ok");
 	 }
 }

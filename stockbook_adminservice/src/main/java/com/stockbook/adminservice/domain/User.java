@@ -30,7 +30,7 @@ public class User {
 	private String email;
 
 	@Column(name = "contact")
-	private int contact;
+	private Long contact;
 
 	@Column(name = "enabled")
 	private int enabled;
@@ -87,11 +87,12 @@ public class User {
 		this.email = email;
 	}
 
-	public int getContact() {
+	
+	public Long getContact() {
 		return contact;
 	}
 
-	public void setContact(int contact) {
+	public void setContact(Long contact) {
 		this.contact = contact;
 	}
 

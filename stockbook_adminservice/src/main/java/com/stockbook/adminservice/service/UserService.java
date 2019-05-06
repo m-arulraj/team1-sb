@@ -47,12 +47,12 @@ public class UserService {
 		return i -> LocalDate.parse(i.getBillDate(), formatter).getMonthValue() == month;
 	}
 
-	public void saveUser(User user) {
+	public User saveUser(User user) {
 
 		Authorities authorities = saveAuthorites(user);
 		user.setAuthorities(authorities);
-
-		userRepository.save(user);
+          user.setEnabled(1);
+		return userRepository.save(user);
 
 	}
 

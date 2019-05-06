@@ -81,7 +81,7 @@ public class ProductService {
 			System.out.println(theProduct.getCategory().getName());
 			theProduct.setName(product.getName());
 			theProduct.setDescription(product.getDescription());
-			theProduct.setCategory(product.getCategory());
+			//theProduct.setCategory(product.getCategory());
 			System.out.println(theProduct.getCategory().getName());
 			return productRepository.save(theProduct);
 		}
