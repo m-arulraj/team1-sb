@@ -1,34 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<style type="text/css">
-body{
-background-image:
- url("https://media.istockphoto.com/photos/supermarket-aisle-with-empty-green-shopping-cart-picture-id817240836?k=6&m=817240836&s=612x612&w=0&h=I_77CJZV_tl3kdN-R1yav7jIa4lOs4JgqZZH4OyXT_s=");
-height:100%;
-background-size:99%;
-background-repeat:no-repeat; 
+<title>Manager</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html, body, h1, h2, h3, h4, h5 {
+	font-family: "Raleway", sans-serif
 }
 </style>
-<style type="text/css">
-div {
-	position: absolute;
-	top: 35%;
-	right: 17%;
-	left: 29%;
-}
-</style>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Stock Details</title>
-</head>
+<body class="w3-light-grey">
 
-<h2 align="center">STOCK DETAILS</h2>
-<body>
-	<table border="1" align="center">
-		<tr>
+	<%@include file="manager-fragments/manager-nav.jsp"%>
+	
+		<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
+<h2 class="w3-green" align="center">STOCK DETAILS</h2>
+
+	<table border="1" align="center" class="w3-table-all w3-container">
+		<tr class="w3-black">
+		<th>Id</th>
 			<th>MANUFACTURER</th>
 			<th>QUANTITY</th>
 			<th>ADDED DATE</th>
@@ -39,6 +36,7 @@ div {
 		</tr>
 		<c:forEach items="${stockdetails}" var="stockdetails">
 			<tr>
+			<td>${stockdetails.getId()}</td>
 				<td>${stockdetails.getManufacturer()}</td>
 				<td>${stockdetails.getQuantity()}</td>
 				<td>${stockdetails.getDate()}</td>
@@ -49,13 +47,9 @@ div {
 			</tr>
 		</c:forEach>
 	</table>
-	<br>
-	<br>
-	<br>
-	
-	<div align="center">
-	<h3><a href="/viewstock">BACK</a></h3>
-	<h3><a href="/admin">HOME</a></h3>
 	</div>
+	
+	
+	<%@include file="manager-fragments/footer.jsp"%>
 </body>
 </html>
