@@ -7,11 +7,14 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.gson.Gson;
 import com.virtusa.clientapplication.domain.Category;
 import com.virtusa.clientapplication.domain.Product;
 import com.virtusa.clientapplication.domain.Stock;
+import com.virtusa.clientapplication.resource.ErrorResponse;
 import com.virtusa.clientapplication.util.EndPointConstant;
 
 @Service
@@ -56,11 +59,20 @@ public class ClientService {
 	}
 
 	public List<Stock> getStockList(Long id) {
-		ResponseEntity<List<Stock>> responses = restTemplate.exchange(
-				EndPointConstant.PRODUCT_SERVICE_URI + "/stock/product/" + id, HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<Stock>>() {
-				});
-		return responses.getBody();
+		ResponseEntity<List<Stock>> responses;
+		try {
+			responses = restTemplate.exchange(
+					EndPointConstant.PRODUCT_SERVICE_URI + "/stock/product/" + id, HttpMethod.GET, null,
+					new ParameterizedTypeReference<List<Stock>>() {
+					});
+			return responses.getBody();
+		} catch (HttpClientErrorException e) {
+			Gson gson = new Gson();
+			ErrorResponse error =  gson.fromJson(e.getResponseBodyAsString(), ErrorResponse.class);
+			System.out.println(error.getMessage()+"  ====   "+error.getStatus());
+			return null;
+		}
+	
 	}
 
 	public Product getProductById(Long productId)

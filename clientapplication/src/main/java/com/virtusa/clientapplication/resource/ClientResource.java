@@ -64,7 +64,7 @@ public class ClientResource {
 	@RequestMapping(value = "/viewstockmanager", method = RequestMethod.GET)
 	public ModelAndView viewStock() {
 
-		ModelAndView mav = new ModelAndView("viewstockmanager");
+		ModelAndView mav = new ModelAndView("viewstock");
 
 		List<Product> products = clientService.getAllProducts();
 		mav.addObject("productlist", products);
