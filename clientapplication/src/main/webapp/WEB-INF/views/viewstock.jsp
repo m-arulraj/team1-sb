@@ -18,13 +18,12 @@ html, body, h1, h2, h3, h4, h5 {
 </style>
 <body class="w3-light-grey">
 
-	<%@include file="manager-fragments/manager-nav.jsp"%>
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
 
 
 		<br>
 		<form name="form1" class="w3-card-4 w3-margin w3-padding w3-container"
-			action="/viewstockdetails">
+			action="/viewstockdetails" >
 			<h2 class="w3-center w3-green w3-border">View Stock</h2>
 			<br> <label class="w3-text-large"><strong>Select Product Name</strong>
 			</label>  
@@ -34,17 +33,11 @@ html, body, h1, h2, h3, h4, h5 {
 				</c:forEach>
 			</select> 
 			<br>
-			<center>
-				<input type="submit" class="w3-button w3-green w3-center"
-				style="width: 150px;" value="View Stock " />
-				<br>	<br>	
-				</center>
 				<br>
 		</form>
 
 
 		<br />
 	</div>
-	<%@include file="manager-fragments/footer.jsp"%>
 </body>
 </html>

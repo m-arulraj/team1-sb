@@ -101,9 +101,11 @@ public class UserResource {
 		List<Double> profit = new ArrayList<Double>();
 		for (int i = 0; i < 12; i++) {
 			Double res;
+			  
 			
 				res = (TotalSP.get(i) - TotalCP.get(i));
 				profit.add(res);
+			
 			
 
 		}

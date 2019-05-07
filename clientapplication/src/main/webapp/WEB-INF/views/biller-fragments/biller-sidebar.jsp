@@ -18,8 +18,7 @@
 	<div class="w3-bar-block">
 		<a href="/biller/bill" class="w3-bar-item w3-button w3-padding "><i
 			class="fa fa-file-text-o fa-fw"></i>&nbsp; Generate Bill</a><hr>
-		<a href="/biller/updateform" class="w3-bar-item w3-button w3-padding"><i
-			class="fa fa-user-plus fa-fw"></i>&nbsp; Update Profile</a><hr>
+		
 	    <a href="/"
 			class="w3-bar-item w3-button w3-padding"><i
 			class="fa fa-sign-out"></i>&nbsp; Logout</a><hr>

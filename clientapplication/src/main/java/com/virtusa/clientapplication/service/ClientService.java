@@ -10,11 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import com.google.gson.Gson;
 import com.virtusa.clientapplication.domain.Category;
 import com.virtusa.clientapplication.domain.Product;
 import com.virtusa.clientapplication.domain.Stock;
-import com.virtusa.clientapplication.resource.ErrorResponse;
 import com.virtusa.clientapplication.util.EndPointConstant;
 
 @Service
@@ -67,9 +65,13 @@ public class ClientService {
 					});
 			return responses.getBody();
 		} catch (HttpClientErrorException e) {
-			Gson gson = new Gson();
-			ErrorResponse error =  gson.fromJson(e.getResponseBodyAsString(), ErrorResponse.class);
-			System.out.println(error.getMessage()+"  ====   "+error.getStatus());
+			
+			/*
+			 * Gson gson = new Gson(); ErrorResponse error
+			 * =gson.fromJson(e.getResponseBodyAsString(), ErrorResponse.class);
+			 * System.out.println(error.getMessage()+"  ====   "+error.getStatus());
+			 */
+			 
 			return null;
 		}
 	

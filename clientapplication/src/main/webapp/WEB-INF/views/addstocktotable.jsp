@@ -102,7 +102,7 @@ input[type=submit]:hover {
 				
 				
 				 <input type="submit" value="ADD">
-				 
+				 <a href="/manager">BACK</a>
 				 
 		</form:form>
 	</div>

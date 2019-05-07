@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div align="center">
 <h1>STOCK ADDED SUCCESSFULLY</h1>
 <a href="/manger">HOME</a>
  <a href="/addstock">BACK</a>
+ </div>
  </body>
 </html>

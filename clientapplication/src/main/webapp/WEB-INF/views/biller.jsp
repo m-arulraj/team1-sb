@@ -49,14 +49,7 @@ html, body, h1, h2, h3, h4, h5 {
 					<h4>Generate Bill</h4>
 				</div>
 			</div>
-			<div class="w3-third">
-				<div class="w3-container w3-blue w3-padding-16">
-					<a href="/biller/updateform" class="w3-bar-item w3-button"><i
-						class="fa fa-user-plus" style="font-size: 48px; color: black"></i></a>
-					<div class="w3-clear"></div>
-					<h4>Update Profile</h4>
-				</div>
-			</div>
+			
 			<div class="w3-third">
 				<div class="w3-container w3-teal w3-padding-16">
 					<div class="w3-left">

@@ -86,7 +86,6 @@ public class AdminController {
 
 		ModelAndView mav = new ModelAndView("stockdetails");
 		List<Stock> stock = clientService.getStockList(id);
-		// stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList());
 		mav.addObject("stockdetails",
 				stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList()));
 		return mav;

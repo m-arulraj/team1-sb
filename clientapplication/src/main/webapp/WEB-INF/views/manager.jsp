@@ -18,7 +18,7 @@ html, body, h1, h2, h3, h4, h5 {
 </style>
 <body class="w3-light-grey">
 
-<<<<<<< HEAD
+
 	<!-- Top container -->
 	<div class="w3-bar w3-top w3-black w3-large" style="z-index: 4">
 		<button
@@ -56,7 +56,7 @@ html, body, h1, h2, h3, h4, h5 {
 				onclick="w3_close()" title="close menu"><i
 				class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a> --> <a href="/manageproduct"
 				class="w3-bar-item w3-button w3-padding "><i
-				class="fa fa-user-plus fa-fw"></i>&nbsp; MANAGE PRODUCT</a> <!-- <a href="/biller"
+				class="fa fa-suitcase fa-fw"></i>&nbsp; MANAGE PRODUCT</a> <!-- <a href="/biller"
 				class="w3-bar-item w3-button w3-padding"><i
 				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Biller</a> --> <a href="viewstockmanager"
 				class="w3-bar-item w3-button w3-padding"><i
@@ -76,10 +76,10 @@ html, body, h1, h2, h3, h4, h5 {
 		onclick="w3_close()" style="cursor: pointer" title="close side menu"
 		id="myOverlay"></div>
 
-=======
-<%@include file="manager-fragments/manager-nav.jsp"%>
+
+<%-- <%@include file="manager-fragments/manager-nav.jsp"%> --%>
 	
->>>>>>> 5f7d8e994bcdbe731059ec15b04be71d5ca0eccb
+
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
 		<!-- Header -->
@@ -92,21 +92,13 @@ html, body, h1, h2, h3, h4, h5 {
 		<div class="w3-row-padding w3-margin-bottom">
 			<div class="w3-quarter">
 				<div class="w3-container w3-red w3-padding-16">
-<<<<<<< HEAD
+
 					<a href="/manageproduct"
-					class="w3-bar-item w3-button"><i class="fa fa-plus" style="font-size: 48px; color: black"></i></a>
-					<!--  <div class="w3-right">
-          <h3>52</h3>
-        </div> -->
-					<div class="w3-clear"></div>
+					class="w3-bar-item w3-button"><i class="fa fa-suitcase" style="font-size: 48px; color: black"></i></a>
+			<div class="w3-clear"></div>
 					<h4>MANAGE PRODUCTS</h4>
-=======
-					<a href="/addproduct"
-					class="w3-bar-item w3-button">
-					<i class="fa fa-plus" style="font-size: 48px; color: black"></i>
-					</a>
-					<h4>Add Product</h4>
->>>>>>> 5f7d8e994bcdbe731059ec15b04be71d5ca0eccb
+
+					
 				</div>
 			</div>
 			<div class="w3-quarter">
@@ -138,31 +130,9 @@ html, body, h1, h2, h3, h4, h5 {
 			</div>
 		</div> 
 		<hr>
-		<!-- <div class="w3-container">
-			<h5>Product Quantity Available</h5>
-			<h3><a href="/fastmoving">Fast Moving Item</a></h3>
-			
-			
-			<div class="w3-grey">
-			
-				<div class="w3-container w3-center w3-padding w3-red"
-					style="width: 25%"> 20</div>
-			</div>
-
-			
-
-			<h3><a href="/">Slow Moving  Item</a></h3>
-			<div class="w3-grey">
-				<div class="w3-container w3-center w3-padding w3-green"
-					style="width: 75%">75</div>
-			</div>
-		</div> -->
 		
-		
-		
-		<!-- End page content -->
 	</div>
-<%@include file="manager-fragments/footer.jsp"%>
+<%-- <%@include file="manager-fragments/footer.jsp"%> --%>
 	<script>
 		// Get the Sidebar
 		var mySidebar = document.getElementById("mySidebar");
