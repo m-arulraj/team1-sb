@@ -22,7 +22,7 @@
 				class="w3-bar-item w3-button w3-padding-16 w3-hide-large  w3-hover-pale-red"
 				onclick="w3_close()" title="close menu"><i
 				class="fa fa-remove fa-fw"></i>&nbsp; Close Menu</a>
-				 <a href="/manager"
+				 <a href="/admin"
 				class="w3-bar-item w3-button w3-padding w3-hover-pale-red "><i
 				class="fa fa-home fa-fw"></i>&nbsp; Home</a>
 				 <!-- <a href="/addproduct"
@@ -30,7 +30,7 @@
 				class="fa fa-user-plus fa-fw"></i>&nbsp; Add Product</a>
 				 <a href="/manager/category"
 				class="w3-bar-item w3-button w3-padding w3-hover-pale-red"><i
-				class="fa fa-user-plus fa-fw"></i>&nbsp; ADD Category</a> 
+				class="fa fa-user-plus fa-fw"></i>&nbsp; Manage Category</a> 
 				<a href="viewstockmanager"
 				class="w3-bar-item w3-button w3-padding w3-hover-pale-red"><i
 				class="fa fa-eye fa-fw"></i>&nbsp; View Stock</a> --> 

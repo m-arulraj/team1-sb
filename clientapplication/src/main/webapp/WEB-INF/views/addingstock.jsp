@@ -121,7 +121,8 @@ input[type=submit]:hover {
 
 			<input type="submit" value="ADD">
 			<br><br>
-              <a href="/manager">BACK</a>
+              <a href="/manager"  type="Button" class="w3-button w3-green w3-center"
+					style="width: 150px;" >HOME</a> <br> <br>
 
 		</form:form>
 	</div>

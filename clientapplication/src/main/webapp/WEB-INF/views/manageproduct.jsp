@@ -15,6 +15,18 @@ f<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
 }
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
 </style>
 <body class="w3-light-grey">
 
@@ -27,6 +39,7 @@ html, body, h1, h2, h3, h4, h5 {
 		</button>
 		<span class="w3-bar-item w3-right">Welocome To Stock Book</span> <span
 			class="w3-bar-item w3-center"> MANAGER PAGE</span>
+
 	</div>
 
 	<!-- Sidebar/menu -->
@@ -40,6 +53,7 @@ html, body, h1, h2, h3, h4, h5 {
 			</div>
 			<div class="w3-col s8 w3-bar">
 				<span>WELCOME <strong>MANAGER</strong></span><br>
+
 				<!--  <a href="#"
 					class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a> <a
 					href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
@@ -89,6 +103,7 @@ html, body, h1, h2, h3, h4, h5 {
 			</h5>
 		</header>
 
+
 		<div class="w3-row-padding w3-margin-bottom">
 			<div class="w3-quarter">
 				<div class="w3-container w3-red w3-padding-16">
@@ -118,8 +133,12 @@ html, body, h1, h2, h3, h4, h5 {
 
 
 		</div>
-	</div>
 
+	</div><br><br>
+	<div align="center">
+		<a href="/manager"  type="Button" class="w3-button w3-cyan w3-center"
+					style="width: 150px;" value="Home">HOME</a> <br> <br>
+	</div>
 	<script>
 		// Get the Sidebar
 		var mySidebar = document.getElementById("mySidebar");

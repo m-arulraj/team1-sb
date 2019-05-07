@@ -95,4 +95,10 @@ public class ClientService {
 		
 	}
 
+	public void addCategory(Category category) {
+		
+		restTemplate.postForEntity(EndPointConstant.PRODUCT_SERVICE_URI + "category",
+				category, Category.class);
+	}
+
 }

@@ -64,7 +64,7 @@ public class ClientResource {
 	@RequestMapping(value = "/viewstockmanager", method = RequestMethod.GET)
 	public ModelAndView viewStock() {
 
-		ModelAndView mav = new ModelAndView("viewstock");
+		ModelAndView mav = new ModelAndView("viewstockmanager");
 
 		List<Product> products = clientService.getAllProducts();
 		mav.addObject("productlist", products);
@@ -133,78 +133,95 @@ public class ClientResource {
 	@RequestMapping(value = "/addstocktotable")
 	public String addStockToTable(@ModelAttribute("stockdetails") Stock stock, HttpSession session) {
 
-		 Product product = (Product) session.getAttribute("productid"); 
-           stock.setProductId(product.getId());
+		Product product = (Product) session.getAttribute("productid");
+		stock.setProductId(product.getId());
 		stock.setOriginalQuantity(stock.getQuantity());
 
 		clientService.saveStock(stock);
 
 		return "stockadded";
 	}
+
 	@RequestMapping(value = "/viewstockdetailsmanager", method = RequestMethod.GET)
 	public ModelAndView viewStockDetails(@RequestParam("productId") Long id) {
 
 		ModelAndView mav = new ModelAndView("stockdetailsmanager");
 		List<Stock> stock = clientService.getStockList(id);
-		
+
 		// stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList());
 		mav.addObject("stockdetails",
 				stock.stream().sorted(Comparator.comparing(Stock::getDate)).collect(Collectors.toList()));
 		return mav;
 
 	}
-	
-	@RequestMapping(value="/managerhome")
+
+	@RequestMapping(value = "/managerhome")
 	public String homePath() {
-		
+
 		return "manager";
 	}
-	
-	@RequestMapping(value="/errorpage")
+
+	@RequestMapping(value = "/errorpage")
 	public String error() {
-		
+
 		return "errorpage2";
 	}
-	
-	@RequestMapping(value="/addstockforexistingproduct")
+
+	@RequestMapping(value = "/addstockforexistingproduct")
 	public ModelAndView addstock() {
 		List<Product> products = clientService.getAllProducts();
-		ModelAndView mav=new ModelAndView("addingstock");
-		mav.addObject("productlist",products);
-		mav.addObject("stockdetails",new Stock());
+		ModelAndView mav = new ModelAndView("addingstock");
+		mav.addObject("productlist", products);
+		mav.addObject("stockdetails", new Stock());
 		return mav;
 	}
-	
-	@RequestMapping(value="/manageproduct")
+
+	@RequestMapping(value = "/manageproduct")
 	public String manageProduct() {
 		return "manageproduct";
 	}
-	@RequestMapping(value="/updateproduct")
+
+	@RequestMapping(value = "/updateproduct")
 	public ModelAndView updateProduct() {
-		ModelAndView mav=new ModelAndView("updateproduct");
+		ModelAndView mav = new ModelAndView("updateproduct");
 		List<Product> products = clientService.getAllProducts();
 		mav.addObject("productlist", products);
 		return mav;
 	}
-	
-	
-	@RequestMapping(value="/deleteproduct")
+
+	@RequestMapping(value = "/deleteproduct")
 	public ModelAndView deleteProduct() {
-    
-		ModelAndView mav=new ModelAndView("deleteproduct");
+
+		ModelAndView mav = new ModelAndView("deleteproduct");
 		List<Product> products = clientService.getAllProducts();
 		mav.addObject("productlist", products);
 		return mav;
 	}
-	
-	@RequestMapping(value="/delete")
+
+	@RequestMapping(value = "/delete")
 	public ModelAndView delete(@RequestParam("productId") Long productId) {
-             clientService.deleteProductById(productId);
-		ModelAndView mav=new ModelAndView("deleteproduct");
+		clientService.deleteProductById(productId);
+		ModelAndView mav = new ModelAndView("deleteproduct");
 		mav.addObject("generated", true);
-		return mav ;
+		return mav;
 	}
-	
-	
-	
+
+	@RequestMapping(value = "/addcategory")
+	public ModelAndView addCategory() {
+		ModelAndView mav = new ModelAndView("addcategory");
+		mav.addObject("category", new Category());
+		return mav;
+	}
+
+	@RequestMapping(value = "/category")
+	public ModelAndView addingCategory(@ModelAttribute("category") Category category) {
+
+		clientService.addCategory(category);
+		ModelAndView mav = new ModelAndView("addcategory");
+		mav.addObject("generated", true);
+
+		return mav;
+
+	}
+
 }
