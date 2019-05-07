@@ -19,7 +19,7 @@ html, body, h1, h2, h3, h4, h5 {
 </style>
 <body class="w3-light-grey">
 
-<%-- <%@include file="manager-fragments/manager-nav.jsp"%> --%>
+<%@include file="manager-fragments/manager-nav.jsp"%>
 	
 <div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
 		<div class="w3-container">
@@ -52,6 +52,6 @@ html, body, h1, h2, h3, h4, h5 {
 		</div>
 	
 </div>
-<%-- <%@include file="manager-fragments/footer.jsp"%> --%>
+<%@include file="manager-fragments/footer.jsp"%>
 </body>
 </html>
