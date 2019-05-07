@@ -1,22 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700"
 	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <title>The Stock Book Registration Form</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -28,8 +35,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
 body {
-	color: #fff;
-	background: #63738a;
+	
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -48,11 +54,12 @@ body {
 }
 
 .signup-form {
-	width: 400px;
 	margin: 0 auto;
 	padding: 30px 0;
 }
-
+.modal-body,.modal-header{
+color:black;
+}
 .signup-form h2 {
 	color: #636363;
 	margin: 0 0 15px;
@@ -96,9 +103,7 @@ body {
 .signup-form .form-group {
 	margin-bottom: 20px;
 }
-.modal-body,.modal-header{
-color:black;
-}
+
 .signup-form input[type="checkbox"] {
 	margin-top: 3px;
 }
@@ -138,6 +143,10 @@ color:black;
 </style>
 </head>
 <body>
+	<%@include file="admin-fragments/admin-nav.jsp"%>
+
+	<div class="w3-main w3-container w3-padding w3-card" style="margin-left: 300px; margin-top: 43px;">
+	
 	<div class="signup-form">
 		<form:form action="/user" method="post" modelAttribute="user">
 			<h2>Register</h2>
@@ -215,6 +224,9 @@ color:black;
 			// Show the Modal on load
 			$("#myModal").modal("show");
 		});
-	</script>
-</body>
-</html>
+		</script>
+
+		</div>
+		<%@include file="admin-fragments/footer.jsp"%>
+	</body>
+	</html>
